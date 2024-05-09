@@ -20,7 +20,7 @@ include("connect.php");
                 <a href="Landing page.php">
                     <div id="asd">
                         <img src="upload/page/logo.png"width="30" alt="Logo" />
-                        <h2 class="Swiftie Shopper">Swiftie Shopper</h2>
+                        <h2 class="Swiftie Shopper">WestMed</h2>
                     </div>
                 </a>
             </div>
@@ -85,7 +85,7 @@ include("connect.php");
                     </div>
                 </div>
                 <div class="div-2">
-                    <div class="text-wrapper-3">ABOUT SWIFTIE SHOPPER</div>
+                    <div class="text-wrapper-3">ABOUT WestMed</div>
                     <div class="frame-2">
                         <div class="list-item-link-2">
                             <a href="about.php">
@@ -176,7 +176,7 @@ include("connect.php");
                 </div>
             </div>
             <div class="div-dmgodq">
-                <p class="p">COPYRIGHT 2023 © Swiftie Shopper</p>
+                <p class="p">COPYRIGHT 2024 © WestMed</p>
             </div>
         </div>
     </footer>

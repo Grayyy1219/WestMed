@@ -18,7 +18,7 @@
                 </div>
             </div>
             <div class="div-2">
-                <div class="text-wrapper-3">ABOUT SWIFTIE SHOPPER</div>
+                <div class="text-wrapper-3">ABOUT WestMed</div>
                 <div class="frame-2">
                     <div class="list-item-link-2">
                         <a href="about.php">
@@ -109,7 +109,7 @@
             </div>
         </div>
         <div class="div-dmgodq">
-            <p class="p">COPYRIGHT 2023 © Swiftie Shopper</p>
+            <p class="p">COPYRIGHT 2024 © WestMed</p>
         </div>
     </div>
 </footer>

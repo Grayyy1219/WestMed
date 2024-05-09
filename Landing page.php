@@ -87,22 +87,7 @@ echo "<style>
             <?php include("trend.php"); ?>
         </div>
     </div>
-    <div class="trenddiv">
-        <div class="text-wrapper">Brand We Love</div>
-        <div class="imgtrend">
-            <div class="img"><img src="img/heels1.png"></div>
-            <div class="img"><img src="img/heels5.png"></div>
-            <div class="img"><img src="img/glass2.png"></div>
-            <div class="img"><img src="img/bag3.png"></div>
-            <div class="img"><img src="img/glass5.png"></div>
-            <div class="img"><img src="img/bag4.png"></div>
-            <div class="img"><img src="img/heels4.png"></div>
-            <div class="img"><img src="img/bottom3.png"></div>
-            <div class="img"><img src="img/bottom6.png"></div>
-            <div class="img"><img src="img/bottom1.png"></div>
-        </div>
-    </div>
-
+    
     <?php include("footer.php"); ?>
 </body>
  <script>
