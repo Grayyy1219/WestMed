@@ -1,0 +1,360 @@
+.wedit {
+    display: flex;
+    border: 1px solid #000000;
+    height: 344px;
+    margin-top: 50px;
+    align-items: center;
+    border-radius: 5px;
+    padding: 30px;
+    gap: 20px;
+}
+
+.infodiv {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 30px 10px;
+    position: relative;
+    background-color: #ffffff;
+}
+
+.infodiv .divmyprofile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    padding: 18px 0px 19px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: #efefef;
+}
+
+.infodiv .my-profile {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 500;
+    color: #333333;
+    font-size: 18px;
+    letter-spacing: 0;
+    line-height: 24px;
+    white-space: nowrap;
+}
+
+.infodiv .text-wrapper {
+    position: relative;
+    width: fit-content;
+    font-family: "Roboto", Helvetica;
+    font-weight: 400;
+    color: #555555;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 17px;
+    white-space: nowrap;
+}
+
+.infodiv .div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.infodiv .profle {
+    display: flex;
+    width: 281px;
+    height: 232px;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 55.67px 0px 56.67px;
+    position: relative;
+}
+
+.infodiv .inprofile {
+    position: relative;
+    align-self: stretch;
+    width: 168.66px;
+}
+
+.infodiv .file {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px 0px 0px;
+    position: absolute;
+    top: 180px;
+    left: 0;
+}
+
+.infodiv .file-2 {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.infodiv .div-wrapper {
+    padding: 0px 12.66px 0px 0px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.infodiv .text-wrapper-2 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 400;
+    color: #999999;
+    font-size: 14px;
+    letter-spacing: 0;
+    line-height: 20px;
+    white-space: nowrap;
+}
+
+.infodiv .file-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.infodiv .divprofileimg {
+    display: flex;
+    flex-direction: column;
+    width: 100px;
+    height: 140px;
+    align-items: flex-start;
+    padding: 20px 0px;
+    position: absolute;
+    top: 0;
+    left: 34px;
+}
+
+.infodiv .profileimg {
+    display: flex;
+    height: 100px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+}
+
+.infodiv .div-lonmg {
+    position: relative;
+    flex: 1;
+    flex-grow: 1;
+    height: 150px;
+    width: 150px;
+}
+
+.infodiv .profilebutton {
+    display: inline-flex;
+    flex-direction: column;
+    min-width: 70px;
+    max-width: 220px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    padding: 10.59px 21px 12.41px;
+    position: absolute;
+    top: 140px;
+    left: 23px;
+    background-color: #ffffff;
+    border-radius: 2px;
+    border: 1px solid;
+    border-color: #00000017;
+    box-shadow: 0px 1px 1px #00000008;
+}
+
+.infodiv .text-wrapper-3 {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 400;
+    color: #555555;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 16.8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
+
+.infodiv .infos {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0px 50px 0px 0px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.infodiv .form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 14px 0px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.infodiv .table {
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 20px 0px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.infodiv .row {
+    align-items: center;
+    justify-content: center;
+    padding: 10px 0px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.infodiv .text-wrapper-4 {
+    position: relative;
+    width: fit-content;
+    font-family: "Roboto", Helvetica;
+    font-weight: 400;
+    color: #555555cc;
+    font-size: 14px;
+    text-align: right;
+    letter-spacing: 0;
+    line-height: 16.8px;
+    white-space: nowrap;
+}
+
+.infodiv .data {
+    height: 40px;
+    align-items: center;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0px 0px 0px 20px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.infodiv .forminput {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    padding: 0px 1px;
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    background-color: #ffffff01;
+    border-radius: 2px;
+    overflow: hidden;
+    border: 1px solid;
+    border-color: #00000024;
+    box-shadow: inset 0px 2px 0px 1px #00000005;
+}
+
+.infodiv .input {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 12px;
+    position: relative;
+    flex: 0 0 auto;
+    margin-top: -0.5px;
+    margin-bottom: -0.5px;
+}
+
+.infodiv .inputxt {
+    position: relative;
+    align-self: stretch;
+    width: 100%;
+    flex: 0 0 auto;
+}
+
+.infodiv .row-2 {
+    align-items: center;
+    padding: 10px 0px;
+    display: inline-flex;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.infodiv .forminput-wrapper {
+    height: 40px;
+    align-items: center;
+    margin-left: -0.31px;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0px 0px 0px 20px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+.infodiv .data-2 {
+    align-items: flex-start;
+    display: inline-flex;
+    flex-direction: column;
+    padding: 0px 0px 0px 20px;
+    position: relative;
+    flex: 0 0 auto;
+}
+
+
+.infodiv .button {
+
+    padding: 10.6px 20px 12.4px;
+    background-color: #ee4d2d;
+    border-radius: 5px;
+    border: unset;
+}
+
+.infodiv .save {
+    position: relative;
+    width: fit-content;
+    margin-top: -1px;
+    font-family: "Roboto", Helvetica;
+    font-weight: 400;
+    color: #ffffff;
+    font-size: 14px;
+    text-align: center;
+    letter-spacing: 0;
+    line-height: 16.8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+}
