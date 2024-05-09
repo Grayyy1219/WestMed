@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Project</title>
-    <link rel="stylesheet" href="css/WestMed.css">
+    <link rel="stylesheet" href="css/swiftieshopper.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/header.css">
 </head>
@@ -82,7 +82,7 @@ echo "<style>
         <?php include("categories.php"); ?>
     </div>
     <div class="trenddiv">
-        <div class="text-wrapper">#WestMedTrend</div>
+        <div class="text-wrapper">#SwiftieShopperTrend</div>
         <div class="imgtrend">
             <?php include("trend.php"); ?>
         </div>

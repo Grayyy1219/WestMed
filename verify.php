@@ -13,7 +13,7 @@ if (!empty($verificationCode)) {
 
     // Execute the update query
     if ($stmt->execute()) {
-        echo '<script>alert("Your email has been successfully verified.\n\nWelcome to the WestMed community!\nHappy shopping!\n\nThank you for choosing WestMed.");</script>';
+        echo '<script>alert("Your email has been successfully verified.\n\nWelcome to the SwiftieShopper community!\nHappy shopping!\n\nThank you for choosing SwiftieShopper.");</script>';
         echo '<script>window.location.href = "Landing page.php";</script>';
     } else {
         echo "Error updating record: " . $stmt->error;
