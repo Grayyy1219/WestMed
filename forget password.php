@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <title>Project</title>
-    <link rel="stylesheet" href="css/swiftieshopper.css">
+    <link rel="stylesheet" href="css/WestMed.css">
     <link rel="stylesheet" href="css/footer.css">
     <link rel="stylesheet" href="css/header.css">
      <link rel="stylesheet" href="css/forget password.css">

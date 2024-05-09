@@ -7,9 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:\xampp\htdocs\SwiftieShopper\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\SwiftieShopper\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\SwiftieShopper\PHPMailer\src\SMTP.php';
+require 'C:\xampp\htdocs\WestMed\PHPMailer\src\Exception.php';
+require 'C:\xampp\htdocs\WestMed\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp\htdocs\WestMed\PHPMailer\src\SMTP.php';
 
 $mail = new PHPMailer(true);
 
@@ -22,7 +22,7 @@ if ($result->num_rows > 0) { // Fix: use > 0 instead of > 1
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username   = 'noreply.swiftieshopper@gmail.com';
+        $mail->Username   = 'noreply.WestMed@gmail.com';
         $mail->Password   = 'qnkm wrww ivxb ccep';
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
@@ -30,7 +30,7 @@ if ($result->num_rows > 0) { // Fix: use > 0 instead of > 1
         $mail->setFrom("$resetemail", 'Swiftie Shopper');
         $mail->addAddress("$resetemail", '');
 
-        $reset_link = "http://localhost/SwiftieShopper/resetpassword.php?email=$resetemail";
+        $reset_link = "http://localhost/WestMed/resetpassword.php?email=$resetemail";
         $message = '
         <html>
         <body>

@@ -8,7 +8,7 @@ include 'query.php';
 
 <head>
     <meta charset="utf-8" />
-    <link rel="stylesheet" href="css/swiftieshopper.css">
+    <link rel="stylesheet" href="css/WestMed.css">
     <link rel="stylesheet" href="css/itempage.css" />
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
