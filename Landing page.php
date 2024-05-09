@@ -82,7 +82,7 @@ echo "<style>
         <?php include("categories.php"); ?>
     </div>
     <div class="trenddiv">
-        <div class="text-wrapper">#SwiftieShopperTrend</div>
+        <div class="text-wrapper">Featured Products</div>
         <div class="imgtrend">
             <?php include("trend.php"); ?>
         </div>
