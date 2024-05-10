@@ -142,7 +142,7 @@ button {
 }
 
 footer {
-    background-color: #cdc4d4;
+    background: linear-gradient(359deg, #60DFCD 0%, #1E9AFE 100%);
     padding: 10px;
 }
 
