@@ -22,13 +22,14 @@ echo "<style>
             background: linear-gradient(to bottom, rgba(0, 0, 0, 0), $backgroundcolor);
     </style>";
 ?>
+
 <body>
-    <?php 
+    <?php
     if ($username != 0 && $block == 1) {
         echo '<script>alert("Your account has been blocked. \n Please contact your administrator for assistance.");</script>';
-        echo"<script>window.location.href = 'logout.php';</script>";
- } ?>
-    <?php include("header.php");?>
+        echo "<script>window.location.href = 'logout.php';</script>";
+    } ?>
+    <?php include("header.php"); ?>
     <div class="slideshow-container">
 
         <div class="mySlides fade">
@@ -66,7 +67,9 @@ echo "<style>
                 slides[i].style.display = "none";
             }
             slideIndex++;
-            if (slideIndex > slides.length) { slideIndex = 1 }
+            if (slideIndex > slides.length) {
+                slideIndex = 1
+            }
             for (i = 0; i < dots.length; i++) {
                 dots[i].className = dots[i].className.replace(" active", "");
             }
@@ -87,13 +90,14 @@ echo "<style>
             <?php include("trend.php"); ?>
         </div>
     </div>
-    
-    <?php include("footer.php"); ?>
+
+    <?php include("footer.html"); ?>
 </body>
- <script>
-        function submitForm(action) {
-            document.getElementById("myForm").action = action;
-            document.getElementById("myForm").submit();
-        }
-    </script>
+<script>
+    function submitForm(action) {
+        document.getElementById("myForm").action = action;
+        document.getElementById("myForm").submit();
+    }
+</script>
+
 </html>

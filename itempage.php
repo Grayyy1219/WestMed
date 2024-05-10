@@ -102,8 +102,7 @@ include 'query.php';
                                                                         <div class="text-wrapper-15">Baliuag, Bulacan
                                                                         </div>
                                                                     </div>
-                                                                    <img class="SVG-margin-2"
-                                                                        src="img/svg-margin-2.svg" />
+                                                                    <img class="SVG-margin-2" src="img/svg-margin-2.svg" />
                                                                 </button>
                                                             </div>
                                                         </div>
@@ -118,8 +117,7 @@ include 'query.php';
                                                             <div class="div-pc-drawer-id">
                                                                 <div class="div-flex-9">
                                                                     <div class="text-wrapper-13">₱0</div>
-                                                                    <img class="SVG-margin-3"
-                                                                        src="img/svg-margin-1.svg" />
+                                                                    <img class="SVG-margin-3" src="img/svg-margin-1.svg" />
                                                                 </div>
                                                             </div>
                                                         </div>
@@ -142,10 +140,7 @@ include 'query.php';
                                                     <input type='hidden' name='quantity' value='<?= $initialQuantityValue ?>'>
                                                     <?php $initialQuantityValue = 1; ?>
                                                     <div class="text-wrapper-17">
-                                                        <input type='number' value='<?= $initialQuantityValue ?>'
-                                                            name='quantity' id='quantityInput' min='1'
-                                                            max='<?= $Quantity ?>'
-                                                            onchange='updateInputQuantity(this.value)'>
+                                                        <input type='number' value='<?= $initialQuantityValue ?>' name='quantity' id='quantityInput' min='1' max='<?= $Quantity ?>' onchange='updateInputQuantity(this.value)'>
                                                     </div>
                                                 </div>
                                                 <div class="div-7">
@@ -164,8 +159,7 @@ include 'query.php';
                                 <img loading='lazy' src='img/cart.png' class='img-3' width="20px" />
                                 <div class='div-27'><input type='submit' value='Add to Basket' style='all:unset'></div>
                             </div>
-                            <div class='div-28'
-                                onclick="submitForm('purchaseItems2.php?selectedItems=<?= $escapedItemID ?>&Quantity=<?= $initialQuantityValue ?>&Price=<?= $Price ?>')">
+                            <div class='div-28' onclick="submitForm('purchaseItems2.php?selectedItems=<?= $escapedItemID ?>&Quantity=<?= $initialQuantityValue ?>&Price=<?= $Price ?>')">
                                 <img loading='lazy' src='img/save.png' class='img-3' width="20px" />
                                 <div class='div-29'>Buy now</div>
                             </div>
@@ -183,7 +177,7 @@ include 'query.php';
             document.getElementById("myForm").submit();
         }
     </script>
-    <?php include("footer.php"); ?>
+    <?php include("footer.html"); ?>
 </body>
 
 </html>

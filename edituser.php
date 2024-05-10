@@ -40,12 +40,10 @@
                                     </div>
                                 </div>
                                 <div class="divprofileimg">
-                                    <div class="profileimg"><img class="div-lonmg" id="profileImage"
-                                            src="<?php echo $location ?>" /></div>
+                                    <div class="profileimg"><img class="div-lonmg" id="profileImage" src="<?php echo $location ?>" /></div>
                                 </div>
                                 <label class="profilebutton">
-                                    <div class="text-wrapper-3">Select Image <input type="file" id="img" name="img"
-                                            accept="image/*" style="display: none;"></div>
+                                    <div class="text-wrapper-3">Select Image <input type="file" id="img" name="img" accept="image/*" style="display: none;"></div>
                                 </label>
                             </div>
                         </div>
@@ -102,17 +100,17 @@
         </form>
 
     </section>
-    <?php include("footer.php"); ?>
+    <?php include("footer.html"); ?>
 </body>
 <script>
-    document.getElementById('img').addEventListener('change', function (event) {
+    document.getElementById('img').addEventListener('change', function(event) {
         const fileInput = event.target;
         const profileImage = document.getElementById('profileImage');
 
         const file = fileInput.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function (e) {
+            reader.onload = function(e) {
                 profileImage.src = e.target.result;
             };
             reader.readAsDataURL(file);

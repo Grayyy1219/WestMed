@@ -17,8 +17,8 @@ include("query.php");
     <?php include("header.php"); ?>
 
     <?php include("page.php"); ?>
-    
-    <?php include("footer.php"); ?>
+
+    <?php include("footer.html"); ?>
 </body>
 
 </html>

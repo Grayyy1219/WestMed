@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <?php include("header.php");?>
+    <?php include("header.php"); ?>
     <div class="te">
         <?php
         echo "<div class='profileimg'><p><img  src='$location' width='200 height='200'></p><br><br>";
@@ -43,15 +43,13 @@
                                 <div>
                                     <p>New Password:</p>
                                     <div class="weitem">
-                                        <input type='password' id='newpass' name='newpass' class="password-input" value=''
-                                            required>
+                                        <input type='password' id='newpass' name='newpass' class="password-input" value='' required>
                                     </div>
                                 </div>
                                 <div>
                                     <p>Confirm Password:</p>
                                     <div class="weitem">
-                                        <input type='password' id='confirmpass' name='confirmpass' class="password-input"
-                                            value='' required>
+                                        <input type='password' id='confirmpass' name='confirmpass' class="password-input" value='' required>
                                     </div>
                                 </div>
                                 <label class="btn-save">
@@ -74,19 +72,19 @@
 
             if (newPassword !== confirmPassword) {
                 alert("New Password and Confirm Password must match!");
-                passwordInputs.forEach(function (element) {
+                passwordInputs.forEach(function(element) {
                     element.classList.add('password-mismatch');
                 });
                 return false; // prevent form submission
             } else {
-                passwordInputs.forEach(function (element) {
+                passwordInputs.forEach(function(element) {
                     element.classList.remove('password-mismatch');
                 });
             }
             return true;
         }
     </script>
-    <?php include("footer.php"); ?>
+    <?php include("footer.html"); ?>
 </body>
 
 </html>

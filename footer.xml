@@ -1,0 +1,48 @@
+<info>
+    <CUSTOMER_SERVICE>
+        <PaymentMethods>
+            <text>Payment Methods</text>
+            <link>#</link>
+        </PaymentMethods>
+        <ReturnRefund>
+            <text>Return and Refund</text>
+            <link>#</link>
+        </ReturnRefund>
+        <ContactUs>
+            <text>Contact Us</text>
+            <link>contact.xml</link>
+        </ContactUs>
+    </CUSTOMER_SERVICE>
+    <ABOUT_WestMed>
+        <About_Us>
+            <text>About Us</text>
+            <link>about.xml</link>
+        </About_Us>
+        <Privacy_Policy>
+            <text>Privacy Policy</text>
+            <link>#</link>
+        </Privacy_Policy>
+        <Flash_Deals>
+            <text>Flash Deals</text>
+            <link>#</link>
+        </Flash_Deals>
+    </ABOUT_WestMed>
+    <FOLLOW_US>
+        <Facebook>
+            <text>Facebook</text>
+            <link>href="https://www.facebook.com/leoneilmae.reyes"</link>
+        </Facebook>
+        <Instagram>
+            <text>Instagram</text>
+            <link>href="https://www.instagram.com/_mae_reyes_/"</link>
+        </Instagram>
+        <Twitter>
+            <text>Twitter</text>
+            <link>#</link>
+        </Twitter>
+        <LinkedIn>
+            <text>LinkedIn</text>
+            <link>#</link>
+        </LinkedIn>
+    </FOLLOW_US>
+</info>
