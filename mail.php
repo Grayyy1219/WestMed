@@ -18,13 +18,13 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'noreply.swiftieshopper@gmail.com';
-    $mail->Password   = 'qnkm wrww ivxb ccep';
+    $mail->Username = 'westmed.shopnoreply@gmail.com';
+    $mail->Password = 'gkll chyg hsas njxv';
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
 
     // Recipients
-    $mail->setFrom("$email", 'Swiftie Shopper');
+    $mail->setFrom("$email", 'West Med');
     $mail->addAddress("$email", '');
 
     // Generate a unique verification code 
@@ -36,7 +36,7 @@ try {
 
     // Set the email content
     $mail->isHTML(true);
-    $mail->Subject = 'Confirm Your Westmed Account - Dive into Shopping Bliss!';
+    $mail->Subject = 'Confirm Your Westmed Account - Dive into Med Bliss!';
     $mail->Body    = "Thank you for creating an account with Westmed!. To ensure the security of your account, please verify your email address by clicking on the following link: <br> <b><a href='$verificationLink'>Verification Link</a></b> <br><br> If you did not create an account with Westmed, please ignore this email.<br><br>Thank you for choosing Westmed and happy shopping!";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
