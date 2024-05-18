@@ -7,9 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:\xampp\htdocs\SwiftieShopper\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\SwiftieShopper\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\SwiftieShopper\PHPMailer\src\SMTP.php';
+require 'C:\xampp\htdocs\westmed\PHPMailer\src\Exception.php';
+require 'C:\xampp\htdocs\westmed\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp\htdocs\westmed\PHPMailer\src\SMTP.php';
 
 $mail = new PHPMailer(true);
 
@@ -18,7 +18,7 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'noreply.swiftieshopper@gmail.com';
+    $mail->Username   = 'noreply.Westmed@gmail.com';
     $mail->Password   = 'qnkm wrww ivxb ccep';
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
@@ -32,12 +32,12 @@ try {
     $sql = "UPDATE users SET verification_code = '$verificationCode' WHERE email = '$email'";
     mysqli_query($con, $sql);
     // Include the verification code in the link
-    $verificationLink = "http://localhost/SwiftieShopper/verify.php?code=$verificationCode";
+    $verificationLink = "http://localhost/westmed/verify.php?code=$verificationCode";
 
     // Set the email content
     $mail->isHTML(true);
-    $mail->Subject = 'Confirm Your SwiftieShopper Account - Dive into Shopping Bliss!';
-    $mail->Body    = "Thank you for creating an account with SwiftieShopper!. To ensure the security of your account, please verify your email address by clicking on the following link: <br> <b><a href='$verificationLink'>Verification Link</a></b> <br><br> If you did not create an account with SwiftieShopper, please ignore this email.<br><br>Thank you for choosing SwiftieShopper and happy shopping!";
+    $mail->Subject = 'Confirm Your Westmed Account - Dive into Shopping Bliss!';
+    $mail->Body    = "Thank you for creating an account with Westmed!. To ensure the security of your account, please verify your email address by clicking on the following link: <br> <b><a href='$verificationLink'>Verification Link</a></b> <br><br> If you did not create an account with Westmed, please ignore this email.<br><br>Thank you for choosing Westmed and happy shopping!";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     // Send the email
