@@ -251,9 +251,13 @@ img {
     display: inline-block;
 }
 
-.active {
+.active1 {
     background-color: #717171;
     width: 70px;
+    border-radius: 15px;
+}
+.active {
+    background-color: #717171;
     border-radius: 15px;
 }
 

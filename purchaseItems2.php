@@ -30,7 +30,7 @@ if ($Quantity > $availableQuantity) {
     echo "<div style='text-align: center; padding: 20px;'>";
     echo "<img src='image/no.png' alt='Error Image' style='width: 300px; height: 300px;'>";
     echo "<p style='font-size: 54px; font-weight: bold; margin-top: 10px;'>Apologies, we only have {$availableQuantity} units available in stock.<br>Perhaps some are already in your cart. </p>";
-    echo "<a href='Landing page.php' style='text-decoration: none; color: #9e22ff; font-size: 30px; display: block; margin-top: 10px;'>Home</a>";
+    echo "<a href='Landing page.php' style='text-decoration: none; color: #1E9AFE; font-size: 30px; display: block; margin-top: 10px;'>Home</a>";
     echo "</div>";
     exit();
 }

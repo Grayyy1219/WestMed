@@ -24,14 +24,14 @@
         .success-message {
             font-size: 24px;
             font-weight: bold;
-            color: #9e22ff;
+            color: #1E9AFE;
             margin: 20px 0;
         }
 
         #home-link {
             display: inline-block;
             padding: 10px 20px;
-            background-color: #9e22ff;
+            background-color: #1E9AFE;
             color: #fff;
             text-decoration: none;
             border-radius: 5px;
@@ -39,7 +39,7 @@
         }
 
         #home-link:hover {
-            background-color: #9e22ff;
+            background-color: #1E9AFE;
         }
     </style>
 </head>

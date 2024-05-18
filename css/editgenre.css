@@ -1,7 +1,7 @@
 .Signup {
     padding: 10px;
     cursor: pointer;
-    background-color: #9e22ff;
+    background-color: #1E9AFE;
     color: white;
     border: none;
     border-radius: 3px;
@@ -32,7 +32,7 @@
 .edit {
     padding: 5px 10px;
     cursor: pointer;
-    background-color: #9e22ff;
+    background-color: #1E9AFE;
     color: white;
     border: none;
     border-radius: 3px;

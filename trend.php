@@ -4,12 +4,12 @@
         cursor: pointer;
         margin-top: 25px;
         border-radius: 4px;
-        border: 1px solid #9e22ff;
+        border: 1px solid #1E9AFE;
         padding: 11px 45px;
     }
 
     .div-282:hover {
-        background-color: rgba(58, 34, 255, 0.77);
+        background-color: #1E9AFE;
         color: white;
     }
 </style>

@@ -25,7 +25,7 @@
             display: block;
             margin-top: 20px;
             text-decoration: none;
-            background-color: #9e22ff;
+            background-color: #1E9AFE;
             color: white;
             padding: 10px 20px;
             border-radius: 5px;

@@ -21,13 +21,13 @@
     }
 
     .settings input[type="submit"] {
-        background-color: #9e22ff;
+        background-color: #1E9AFE;
         color: #fff;
         cursor: pointer;
     }
 
     .settings input[type="submit"]:hover {
-        background-color: #9e22ff;
+        background-color: #1E9AFE;
     }
 </style>
 

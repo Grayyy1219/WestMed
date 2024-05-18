@@ -20,7 +20,7 @@ include("query.php"); ?>
                 <a href="Landing page.php">
                     <div id="asd">
                         <img src="upload/page/logo.png" width="30" alt="Logo" />
-                        <h2 class="Swiftie Shopper">Swiftie Shopper</h2>
+                        <h2 class="Swiftie Shopper">WestMed</h2>
                     </div>
                 </a>
             </div>

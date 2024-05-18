@@ -44,7 +44,7 @@ $result = mysqli_query($con, $selectQuery);
         }
 
         .penalty-form button {
-            background-color: #9e22ff;
+            background-color: #1E9AFE;
             color: white;
             padding: 10px 15px;
             border: none;
@@ -53,7 +53,7 @@ $result = mysqli_query($con, $selectQuery);
         }
 
         .penalty-form button:hover {
-            background-color: #9e22ff;
+            background-color: #1E9AFE;
         }
     </style>
 </head>
