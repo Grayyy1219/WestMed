@@ -7,9 +7,9 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'C:\xampp\htdocs\westmed\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\westmed\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\westmed\PHPMailer\src\SMTP.php';
+require 'C:\xampp\htdocs\WestMed\PHPMailer\src\Exception.php';
+require 'C:\xampp\htdocs\WestMed\PHPMailer\src\PHPMailer.php';
+require 'C:\xampp\htdocs\WestMed\PHPMailer\src\SMTP.php';
 
 $mail = new PHPMailer(true);
 
@@ -18,7 +18,7 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'noreply.Westmed@gmail.com';
+    $mail->Username   = 'noreply.swiftieshopper@gmail.com';
     $mail->Password   = 'qnkm wrww ivxb ccep';
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
