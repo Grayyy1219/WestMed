@@ -13,7 +13,7 @@
 }
 
 .pagination-link.active {
-    background-color: #b36de8;
+    background-color: #60DFCD;
     color: #000000;
     border: 1px solid #000000;
 }
@@ -28,6 +28,6 @@
     cursor: pointer;
     margin-top: 25px;
     border-radius: 4px;
-    border: 1px solid #9e22ff;
+    border: 1px solid #1E9AFE ;
     padding: 11px 45px;
 }

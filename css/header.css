@@ -463,3 +463,6 @@ a {
 .input-row input {
     flex: 1;
 }
+img.button {
+    filter: hue-rotate(291deg);
+}

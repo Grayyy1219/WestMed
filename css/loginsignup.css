@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    background: url(./img/bglog.jpg);
+    background: url(./img/wm.png);
     background-size: cover;
     min-height: 100vh;
 }
@@ -300,7 +300,7 @@
 
 .frame .sign-content-wrapper {
     height: 466px;
-    background-color: #b9a0d1;
+    background-color:#60DFCD;
 }
 
 .frame .sign-content {
