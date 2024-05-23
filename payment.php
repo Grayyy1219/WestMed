@@ -156,17 +156,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
 
-    $clearCartQuery = "DELETE FROM cart WHERE cart_id IN ($selectedItems) AND customer_id = ?";
-    $stmtClearCart = mysqli_prepare($con, $clearCartQuery);
-    mysqli_stmt_bind_param($stmtClearCart, "i", $UserID);
-
-    $resultClearCart = mysqli_stmt_execute($stmtClearCart);
-
-    if (!$resultClearCart) {
-        echo "Error clearing cart: " . mysqli_error($con);
-    }
-
-    header('Location: ordersuccessful.php');
+    
+    header('Location: orderdone.php');
     exit();
 }
 ?>
