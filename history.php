@@ -5,7 +5,7 @@ include("query.php");
 $selectQuery = "SELECT items.*, orders.order_date, orders.order_quantity, orders.status
                 FROM items
                 JOIN orders ON items.ItemID  = orders.product_id
-                WHERE orders.customer_id = '$UserID'";
+                WHERE orders.customer_id = '$UserID'  ORDER BY `orders`.`order_date` DESC";
 $result = mysqli_query($con, $selectQuery);
 ?>
 
@@ -18,7 +18,6 @@ $result = mysqli_query($con, $selectQuery);
     <link rel="stylesheet" href="css/borrow2.css">
     <link rel="icon" href="Image/logo.ico">
     <style>
-        /* Add any additional styling here */
         .penalty-form {
             margin-top: 10px;
         }
@@ -94,7 +93,6 @@ $result = mysqli_query($con, $selectQuery);
                             echo $delivery_date;
                             ?>
                         </td>
-
                         <td style="max-width: 40px;">
                             <?php
                             $current_date = date('F j, Y');
@@ -106,46 +104,7 @@ $result = mysqli_query($con, $selectQuery);
                         </td>
                     </tr>
                 <?php endwhile; ?>
-
             </table>
-
-            <script>
-                function payPenalty(bookId) {
-                    console.log("Attempting to pay penalty for book ID: " + bookId);
-
-                    var penaltyAmountInput = document.getElementById('penalty_amount_' + bookId);
-                    var penaltyAmount = penaltyAmountInput.value;
-
-                    var confirmPayment = confirm("This book has an unpaid penalty of PHP " + penaltyAmount + ". Do you want to pay it now?");
-
-                    if (confirmPayment) {
-                        var formData = new FormData();
-                        formData.append('book_id', bookId);
-                        formData.append('penalty_amount', penaltyAmount);
-                        formData.append('pay_penalty', true);
-
-                        var xhr = new XMLHttpRequest();
-                        xhr.open("POST", "pay_penalty.php", true);
-                        xhr.onreadystatechange = function() {
-                            if (xhr.readyState == 4) {
-                                if (xhr.status == 200) {
-                                    console.log("Response from pay_penalty.php: " + xhr.responseText);
-                                    // Add any additional handling based on the response if needed
-                                    if (xhr.responseText === "Payment successful") {
-                                        alert("Your payment has been successfully processed. Thank you for your prompt settlement.");
-                                        location.reload();
-                                    } else {
-                                        alert(xhr.responseText); // Show an alert with the error message
-                                    }
-                                } else {
-                                    console.error("Error in pay_penalty.php: " + xhr.statusText);
-                                }
-                            }
-                        };
-                        xhr.send(formData);
-                    }
-                }
-            </script>
         </div>
     </section>
 </body>
