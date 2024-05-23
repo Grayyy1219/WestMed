@@ -1,31 +1,3 @@
-<?php
-include 'connect.php';
-include 'query.php';
-session_start();
-
-if (!isset($_SESSION['selectedItems'])) {
-    echo "No items selected for purchase.";
-    exit();
-}
-
-$selectedItems = $_SESSION['selectedItems'];
-
-$getSelectedItemsQuery = "SELECT items.ItemID, items.ItemName, items.ItemImage, cart.Quantity, items.Price
-                         FROM cart
-                         INNER JOIN items ON cart.ItemID = items.ItemID
-                         WHERE cart.customer_id = ?
-                         AND cart.cart_id IN ($selectedItems)";
-$stmt = mysqli_prepare($con, $getSelectedItemsQuery);
-mysqli_stmt_bind_param($stmt, "i", $UserID);
-mysqli_stmt_execute($stmt);
-$result = mysqli_stmt_get_result($stmt);
-
-if (!$result) {
-    echo "Error retrieving selected items: " . mysqli_error($con);
-    exit();
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,7 +5,6 @@ if (!$result) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <link rel="stylesheet" href="css/stylemain.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/payment.css">
     <style>
@@ -108,6 +79,34 @@ if (!$result) {
     </style>
 </head>
 
+<?php
+include 'connect.php';
+include 'query.php';
+session_start();
+
+if (!isset($_SESSION['selectedItems'])) {
+    echo "No items selected for purchase.";
+    exit();
+}
+
+$selectedItems = $_SESSION['selectedItems'];
+
+$getSelectedItemsQuery = "SELECT items.ItemID, items.ItemName, items.ItemImage, cart.Quantity, items.Price
+                         FROM cart
+                         INNER JOIN items ON cart.ItemID = items.ItemID
+                         WHERE cart.customer_id = ?
+                         AND cart.cart_id IN ($selectedItems)";
+$stmt = mysqli_prepare($con, $getSelectedItemsQuery);
+mysqli_stmt_bind_param($stmt, "i", $UserID);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
+
+if (!$result) {
+    echo "Error retrieving selected items: " . mysqli_error($con);
+    exit();
+}
+?>
+
 <body>
     <?php
     include("header.php");
@@ -120,7 +119,7 @@ if (!$result) {
                 while ($row = mysqli_fetch_assoc($result)) {
                     $totalPrice = $row['Quantity'] * $row['Price'];
                     $totalPurchaseValue += $totalPrice;
-                    ?>
+                ?>
                     <div class="item-summary">
                         <img src="<?= $row['ItemImage']; ?>" alt="Product Image" class="item-image">
                         <p>
@@ -129,13 +128,11 @@ if (!$result) {
                             <?= $totalPrice; ?>.00
                         </p>
                     </div>
-                    <?php
+                <?php
                 }
                 ?>
                 <div class="checkout-button">
-                    <button
-                        style="font-weight:bold; font-size:20px; background-color: forestgreen; color: white; padding: 20px; border: none; border-radius: 5px;"
-                        onclick="checkout()">Checkout</button>
+                    <button style="font-weight:bold; font-size:20px; background-color: forestgreen; color: white; padding: 20px; border: none; border-radius: 5px;" onclick="checkout()">Checkout</button>
                     <p>Total Purchase Value:</p>
                     <p style="font-weight: bold; font-size: larger; color: green;"> PHP
                         <?= $totalPurchaseValue; ?>.00
