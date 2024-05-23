@@ -13,13 +13,18 @@ a {
     color: black;
 }
 
+header {
+    position: sticky;
+    z-index: 99;
+    top: 0px;
+}
+
 .header {
     display: flex;
     height: 88px;
     align-items: center;
     justify-content: center;
     gap: 32px;
-    position: fixed;
     background: linear-gradient(359deg, #1E9AFE 0%, #60DFCD 100%);
     width: 100%;
     min-width: 98vw;
