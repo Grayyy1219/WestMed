@@ -28,6 +28,7 @@ include 'query.php';
     $Quantity = $_GET["Quantity"];
     $shortenedTitle = (strlen($Itemname) > 40) ? substr($Itemname, 0, 40) . '...' : $Itemname;
     $escapedItemID = htmlspecialchars($ItemID, ENT_QUOTES, 'UTF-8');
+    $Description = $_GET["Description"];
     ?>
     <form id="myForm" action='' method='post' enctype='multipart/form-data'>
         <section class="slideshow-container">
@@ -48,6 +49,7 @@ include 'query.php';
                                 <input type="hidden" name="Itemname" value="<?= $Itemname ?>">
                                 <?= $shortenedTitle ?>
                             </p>
+                            <p class="desc"> <?= $Description ?></p>
                         </div>
                         <div class="section-wrapper">
                             <div class="div-10">

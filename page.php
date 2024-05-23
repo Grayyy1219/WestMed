@@ -36,6 +36,7 @@
         $Price = $row["Price"];
         $Solds = $row["Solds"];
         $Quantity = $row["Quantity"];
+        $Description = $row["description"];
 
         // Truncate long titles
         $shortenedTitle = (strlen($ItemName) > 78) ? substr($ItemName, 0, 78) . '...' : $ItemName;
@@ -47,7 +48,7 @@
                 <br><br>
                 <p style='font-size: small'>Stocks {$Quantity}</p><br>
                 <h4>₱{$Price}</h4>
-               <div class='div-282' onclick=\"submitForm('itempage.php?Itemname=$ItemName&Category=$category&ItemImage=$ItemImage&Price=$Price&Solds=$Solds&Quantity=$Quantity&ItemID=$ItemID')\">
+               <div class='div-282' onclick=\"submitForm('itempage.php?Itemname=$ItemName&Category=$category&ItemImage=$ItemImage&Price=$Price&Solds=$Solds&Quantity=$Quantity&ItemID=$ItemID&Description=$Description')\">
             <input type='submit' style='all:unset' class='div-29' value='Add to cart'>
         </div>
             </div>";
