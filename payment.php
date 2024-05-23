@@ -177,26 +177,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <ItemName>Payment</ItemName>
-    <link rel="stylesheet" href="css/stylemain.css">
+    <link rel="stylesheet" href="css/swiftieshopper.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/payment.css">
 </head>
 
 <body>
-    <?php include("header.php");?>
+    <?php include("header.php"); ?>
     <section>
         <div class="wrapper" id="w3">
             <div class="payment-container">
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="payment-form">
-                    <div class="form-group"> <label for="paymentMode">Payment Mode:</label> <select name="paymentMode"
-                            id="paymentMode" required>
+                    <div class="form-group"> <label for="paymentMode">Payment Mode:</label> <select name="paymentMode" id="paymentMode" required>
                             <option value="credit_card">Credit Card</option>
                             <option value="debit_card">Debit Card</option>
                             <option value="paypal">PayPal</option>
                         </select> </div>
-                    <div class="payment-button"> <button
-                            style="font-weight:bold; font-size:20px;         background-color: forestgreen; color: white; padding: 20px;         border: none; border-radius: 5px;"
-                            type="submit">Submit Payment</button> </div>
+                    <div class="payment-button"> <button style="font-weight:bold; font-size:20px;         background-color: forestgreen; color: white; padding: 20px;         border: none; border-radius: 5px;" type="submit">Submit Payment</button> </div>
                 </form>
             </div>
         </div>
