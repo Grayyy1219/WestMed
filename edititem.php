@@ -108,6 +108,7 @@
                     </div>
                     <input type="hidden" name="bookId" value="<?php echo htmlspecialchars($bookDetails['ItemID']); ?>">
                     Name: <input type="text" name="title" value="<?php echo htmlspecialchars($bookDetails['ItemName']); ?>"><br>
+                    Description: <input type="text" name="title" value="<?php echo htmlspecialchars($bookDetails['description']); ?>"><br>
                     Category: <select name="genre" id="genre">
                         <?php foreach ($genres as $genre) : ?>
                             <option value="<?= htmlspecialchars($genre) ?>" <?php echo ($bookDetails['Category'] == $genre) ? 'selected' : ''; ?>>
