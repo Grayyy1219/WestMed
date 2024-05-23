@@ -23,9 +23,9 @@ $x = 1;
 $query = "SELECT * FROM items ORDER BY Solds DESC LIMIT 5";
 $result = mysqli_query($con, $query);
 
-if ($result && mysqli_num_rows($result) > 0):
-    ?>
-    <?php while ($row = mysqli_fetch_assoc($result)): ?>
+if ($result && mysqli_num_rows($result) > 0) :
+?>
+    <?php while ($row = mysqli_fetch_assoc($result)) : ?>
         <?php
         $ItemID = $row['ItemID'];
         $ItemName = $row['ItemName'];
@@ -34,6 +34,8 @@ if ($result && mysqli_num_rows($result) > 0):
         $Price = $row['Price'];
         $Solds = $row['Solds'];
         $Quantity = $row['Quantity'];
+        $Description = $row["description"];
+
         $shortenedTitle = (strlen($row['ItemName']) > 78) ? substr($row['ItemName'], 0, 78) . '...' : $row['ItemName'];
         ?>
         <div class="img"><img src="<?php echo $ItemImage; ?>"></div>
@@ -45,7 +47,7 @@ if ($result && mysqli_num_rows($result) > 0):
                 <p style='font-size: small'>{$Solds} Solds!</p><br>
                 <h4>₱{$Price}</h4>
                 <form action='' id='myForm' method='post' enctype='multipart/form-data'>
-                <div class='div-282' onclick=\"submitForm('itempage.php?Itemname=$ItemName&Category=$category&ItemImage=$ItemImage&Price=$Price&Solds=$Solds&Quantity=$Quantity&ItemID=$ItemID')\">
+                <div class='div-282' onclick=\"submitForm('itempage.php?Itemname=$ItemName&Category=$category&ItemImage=$ItemImage&Price=$Price&Solds=$Solds&Quantity=$Quantity&ItemID=$ItemID&Description=$Description')\">
                 </form>
             <input type='submit' style='all:unset' class='div-29' value='Add to cart'>
         </div>
@@ -54,7 +56,7 @@ if ($result && mysqli_num_rows($result) > 0):
 
     <?php endwhile; ?>
 <?php
-else:
+else :
     echo "Error fetching the most sold items from the database: " . mysqli_error($con);
 endif;
 ?>

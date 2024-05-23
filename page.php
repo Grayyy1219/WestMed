@@ -12,13 +12,10 @@
     $category = $_GET['category'];
     $queryUser = mysqli_query($con, "SELECT * FROM category WHERE ItemCategory = '$category'");
     $rowUser2 = mysqli_fetch_assoc($queryUser);
-    $banner = $rowUser2["banner"];
+
     echo "<div id='shop'>
-        <div id='asd'>
-            <img src='$banner'>
-        </div>
         <div class='shop'>";
-    $imagesPerPage = 6;
+    $imagesPerPage = 8;
     $currentPage = $_GET['page'];
 
     $startIndex = ($currentPage - 1) * $imagesPerPage;
