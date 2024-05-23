@@ -39,7 +39,6 @@ if ($result && mysqli_num_rows($result) > 0) :
         $shortenedTitle = (strlen($row['ItemName']) > 78) ? substr($row['ItemName'], 0, 78) . '...' : $row['ItemName'];
         ?>
         <?php echo "<div class='itemcard'>
-            <div><b>No.$x</b></div>
                 <a href=''><img src='{$ItemImage}' width='100'></a>
                 <p><strong>{$shortenedTitle}</strong></p>
                 <br><br>
