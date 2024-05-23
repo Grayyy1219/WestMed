@@ -11,9 +11,9 @@ if (!isset($_SESSION['selectedItems'])) {
 $selectedItems = $_SESSION['selectedItems'];
 
 $getSelectedItemsQuery = "SELECT items.ItemID, items.ItemName, items.price, cart.quantity 
-                         FROM cart 
-                         INNER JOIN items ON cart.ItemID = items.ItemID 
-                         WHERE cart.customer_id = ? AND cart.cart_id IN ($selectedItems)";
+ FROM cart 
+ INNER JOIN items ON cart.ItemID = items.ItemID 
+ WHERE cart.customer_id = ? AND cart.cart_id IN ($selectedItems)";
 
 $stmtGetSelectedItems = mysqli_prepare($con, $getSelectedItemsQuery);
 mysqli_stmt_bind_param($stmtGetSelectedItems, "i", $UserID);
@@ -36,7 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Insert order record
     $saveOrderQuery = "INSERT INTO orders (customer_id, order_date, total_amount, order_quantity)
-        VALUES (?, CURRENT_TIMESTAMP, ?, ?)";
+  VALUES (?, CURRENT_TIMESTAMP, ?, ?)";
 
     $stmtSaveOrder = mysqli_prepare($con, $saveOrderQuery);
 
@@ -78,7 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     $savePaymentQuery = "INSERT INTO payment (order_id, customer_id, payment_mode, amount_paid) 
-                         VALUES (?, ?, ?, ?)";
+ VALUES (?, ?, ?, ?)";
 
     $stmtSavePayment = mysqli_prepare($con, $savePaymentQuery);
 
@@ -154,7 +154,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error updating order with product IDs: " . mysqli_error($con);
     }
-    
+
     header('Location: orderdone.php');
     exit();
 }
@@ -178,11 +178,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="payment-container">
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="payment-form">
                     <div class="form-group"> <label for="paymentMode">Payment Mode:</label> <select name="paymentMode" id="paymentMode" required>
-                            <option value="credit_card">Credit Card</option>
-                            <option value="debit_card">Debit Card</option>
-                            <option value="paypal">PayPal</option>
+                            <?php
+                            $sql = "SELECT method_name FROM paymethod";
+                            $result = $con->query($sql);
+                            if ($result->num_rows > 0) {
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<option value="' . $row["method_name"] . '">' . $row["method_name"] . '</option>';
+                                }
+                            }
+
+                            ?>
                         </select> </div>
-                    <div class="payment-button"> <button style="font-weight:bold; font-size:20px;         background-color: forestgreen; color: white; padding: 20px;         border: none; border-radius: 5px;" type="submit">Submit Payment</button> </div>
+                    <div class="payment-button"> <button style="font-weight:bold; font-size:20px;background-color: forestgreen; color: white; padding: 20px;border: none; border-radius: 5px;" type="submit">Submit Payment</button> </div>
                 </form>
             </div>
         </div>

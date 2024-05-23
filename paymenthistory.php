@@ -64,10 +64,13 @@ $result = mysqli_query($con, $sql);
         </form>
         <form action="paymentprint.php">
             <input type="hidden" name="search" value="<?php echo $_GET['search']; ?>">
-
             <input type="hidden" name="start_date" value="<?php echo $_GET['start_date']; ?>">
             <input type="hidden" name="end_date" value="<?php echo $_GET['end_date']; ?>">
             <button type="submit" name="print">Print</button>
+
+        </form>
+        <form action="addpayment.php" class="form1" method="post">
+            <button type="submit" name="method">Manage Method</button>
         </form>
         <table>
             <tr>
@@ -101,7 +104,9 @@ $result = mysqli_query($con, $sql);
             }
             ?>
         </table>
+
     </div>
+
 </body>
 
 </html>
