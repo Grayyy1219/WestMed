@@ -16,13 +16,19 @@ function getSearchResults($searchValue, $con)
             if ($displayedItems >= 5) {
                 break;
             }
-
+            $ItemID = $row["ItemID"];
+            $ItemName = $row["ItemName"];
             $name = $row['ItemName'];
+            $ItemImage = $row["ItemImage"];
+            $Price = $row["Price"];
+            $Solds = $row["Solds"];
+            $Quantity = $row["Quantity"];
+            $Description = $row["description"];
             $price = formatPrice($row['Price']);
             $location = $row['ItemImage'];
             $category = $row['Category'];
 
-            $txt .= "<div class='item'><img class='imgsearch' src='$location'><h4>$name</h4><p class='ctgy'>$category</p><p class='price'>&#8369 <b>$price</b></p></div>";
+            $txt .= "<a href='itempage.php?Itemname=$ItemName&Category=$category&ItemImage=$ItemImage&Price=$Price&Solds=$Solds&Quantity=$Quantity&ItemID=$ItemID&Description=$Description''><div class='item'><img class='imgsearch' src='$location'><h4>$name</h4><p class='ctgy'>$category</p><p class='price'>&#8369 <b>$price</b></p></div></a>";
             $displayedItems++;
         }
     } else {
