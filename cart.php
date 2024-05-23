@@ -76,20 +76,22 @@
             font-size: larger;
             color: green;
         }
+
+        .cart-item-details input {
+            width: 50px;
+            text-align: center;
+        }
     </style>
 </head>
 
 <?php
 include 'connect.php';
 include 'query.php';
-$getCartItemsQuery = "SELECT cart.cart_id, items.ItemID  , items.ItemName, items.ItemImage, cart.quantity, items.price
+$getCartItemsQuery = "SELECT cart.cart_id, items.ItemID, items.ItemName, items.ItemImage, cart.quantity, items.price
                      FROM cart
-                     INNER JOIN items ON cart.ItemID   = items.ItemID  
+                     INNER JOIN items ON cart.ItemID = items.ItemID
                      WHERE cart.customer_id = $UserID";
 $result = mysqli_query($con, $getCartItemsQuery);
-
-
-$totalCartValue = 0;
 ?>
 
 <body>
@@ -105,34 +107,25 @@ $totalCartValue = 0;
                     <?php
                     while ($row = mysqli_fetch_assoc($result)) {
                         $totalPrice = $row['quantity'] * $row['price'];
-                        $totalCartValue += $totalPrice;
                     ?>
                         <div class="cart-item">
                             <input type="checkbox" name="selectedItems[]" value="<?= $row['cart_id']; ?>" onchange="updateTotal(this)">
                             <img src="<?= $row['ItemImage']; ?>" alt="Product Image" class="cart-item-image">
                             <div class="cart-item-details">
-                                <p>
-                                    <?= $row['ItemName']; ?>
-                                </p>
+                                <p><?= $row['ItemName']; ?></p>
                                 <p>Quantity:
-                                    <?= $row['quantity']; ?>
+                                    <input type="number" name="quantity[]" value="<?= $row['quantity']; ?>" min="1" data-price="<?= $row['price']; ?>" data-cart-id="<?= $row['cart_id']; ?>" onchange="updateQuantity(this)">
                                 </p>
-                                <?php
-                                echo "<p class='total-price'>Total Price: PHP $totalPrice</p>";
-                                ?>
+                                <p class='total-price'>Total Price: PHP <span><?= $totalPrice; ?></span></p>
                             </div>
                         </div>
                     <?php
                     }
                     ?>
                     <div class="cart-total">
-                        <button type="submit" name="deleteSelected" formaction="deleteCartItem.php" onclick="return confirmAction()">Remove
-                            Selected</button>
+                        <button type="submit" name="deleteSelected" formaction="deleteCartItem.php" onclick="return confirmAction()">Remove Selected</button>
                         <button type="submit" name="buySelected" formaction="processCartAction.php">Buy Now</button>
-                        <p>Total Selected Item Price: <span id="totalCartValue">PHP
-                                <?= $totalCartValue = 0;
-                                $totalCartValue; ?>.00
-                            </span></p>
+                        <p>Total Selected Item Price: PHP <span id="totalCartValue">0.00</span></p>
                     </div>
                 </form>
             </div>
@@ -141,18 +134,13 @@ $totalCartValue = 0;
     <script>
         function confirmAction() {
             var checkboxes = document.getElementsByName('selectedItems[]');
-
-            // Check if no checkbox is selected
             var checkedBoxes = Array.from(checkboxes).filter(checkbox => checkbox.checked);
+
             if (checkedBoxes.length === 0) {
                 alert("Please select an item to proceed to checkout.");
                 return false;
             } else {
-                if (confirm("Would you like to confirm the deletion of selected items?")) {
-                    return true;
-                } else {
-                    return false;
-                }
+                return confirm("Would you like to confirm the deletion of selected items?");
             }
         }
 
@@ -160,17 +148,42 @@ $totalCartValue = 0;
             var checkboxes = document.getElementsByName('selectedItems[]');
             var total = 0;
 
-            for (var i = 0; i < checkboxes.length; i++) {
-                if (checkboxes[i].checked) {
-                    var totalPriceElement = checkboxes[i].closest('.cart-item').querySelector('.total-price');
-                    var totalPriceText = totalPriceElement.textContent.trim();
-
-                    var totalPrice = parseFloat(totalPriceText.replace(/[^\d]/g, ''));
-                    total += totalPrice;
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    var totalPriceElement = checkbox.closest('.cart-item').querySelector('.total-price span');
+                    total += parseFloat(totalPriceElement.textContent);
                 }
-            }
+            });
 
             document.getElementById('totalCartValue').textContent = total.toFixed(2);
+        }
+
+        function updateQuantity(input) {
+            var quantity = input.value;
+            var price = input.dataset.price;
+            var cartId = input.dataset.cartId;
+            var totalPriceElement = input.closest('.cart-item').querySelector('.total-price span');
+            var newTotalPrice = quantity * price;
+
+            totalPriceElement.textContent = newTotalPrice.toFixed(2);
+
+            var checkboxes = document.getElementsByName('selectedItems[]');
+            checkboxes.forEach(function(checkbox) {
+                if (checkbox.checked) {
+                    updateTotal(checkbox);
+                }
+            });
+
+            // Send AJAX request to update quantity in database
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "updateQuantity.php", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState == 4 && xhr.status == 200) {
+                    console.log(xhr.responseText); // Handle the response from the server
+                }
+            };
+            xhr.send("cart_id=" + cartId + "&quantity=" + quantity);
         }
     </script>
 </body>
