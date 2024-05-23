@@ -37,11 +37,11 @@
         }
     }
 
-    function updateBookDetails($con, $bookId, $title, $genre, $bookImage, $price, $solds)
+    function updateBookDetails($con, $bookId, $title, $description, $genre, $bookImage, $price, $solds)
     {
-        $sql = "UPDATE items SET ItemName=?, Category=?, ItemImage=?,  Price=?, Solds=? WHERE ItemID =?";
+        $sql = "UPDATE items SET ItemName=?, description=?, Category=?, ItemImage=?,  Price=?, Solds=? WHERE ItemID =?";
         $stmt = $con->prepare($sql);
-        $stmt->bind_param("sssidi", $title, $genre, $bookImage, $price, $solds, $bookId);
+        $stmt->bind_param("ssssidi", $title, $description, $genre, $bookImage, $price, $solds, $bookId);
         $stmt->execute();
 
         if ($stmt->errno) {
@@ -58,6 +58,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bookId = isset($_POST["bookId"]) ? $_POST["bookId"] : '';
         $title = isset($_POST["title"]) ? $_POST["title"] : '';
+        $description = isset($_POST["description"]) ? $_POST["description"] : '';
         $genre = isset($_POST["genre"]) ? $_POST["genre"] : '';
         $price = isset($_POST["price"]) ? $_POST["price"] : '';
         $solds = isset($_POST["solds"]) ? $_POST["solds"] : '';
@@ -80,7 +81,7 @@
 
         // Additional validation can be added here for other form fields.
 
-        updateBookDetails($con, $bookId, $title, $genre, $bookImage, $price, $solds);
+        updateBookDetails($con, $bookId, $title, $description, $genre, $bookImage, $price, $solds);
     }
 
     $bookId = isset($_GET["bookId"]) ? $_GET["bookId"] : '';
@@ -108,7 +109,7 @@
                     </div>
                     <input type="hidden" name="bookId" value="<?php echo htmlspecialchars($bookDetails['ItemID']); ?>">
                     Name: <input type="text" name="title" value="<?php echo htmlspecialchars($bookDetails['ItemName']); ?>"><br>
-                    Description: <input type="text" name="title" value="<?php echo htmlspecialchars($bookDetails['description']); ?>"><br>
+                    Description: <input type="text" name="description" value="<?php echo htmlspecialchars($bookDetails['description']); ?>"><br>
                     Category: <select name="genre" id="genre">
                         <?php foreach ($genres as $genre) : ?>
                             <option value="<?= htmlspecialchars($genre) ?>" <?php echo ($bookDetails['Category'] == $genre) ? 'selected' : ''; ?>>
