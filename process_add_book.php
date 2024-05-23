@@ -4,6 +4,7 @@ include 'connect.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST["title"];
     $genre = $_POST["genre"];
+    $description = $_POST["description"];
     $price = isset($_POST["price"]) ? $_POST["price"] : null;
     $quantity = $_POST["quantity"];
 
@@ -22,8 +23,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $bookImage = "default_image_path.jpg"; 
     }
 
-    $query = "INSERT INTO items (ItemName, Category, ItemImage, Price, Quantity) 
-              VALUES ('$title', '$genre', '$bookImage','$price', '$quantity')";
+    $query = "INSERT INTO items (ItemName, description, Category, ItemImage, Price, Quantity) 
+              VALUES ('$title', '$description', '$genre', '$bookImage','$price', '$quantity')";
 
     if (mysqli_query($con, $query)) {
         echo '<script>alert("Item Created successfully!");</script>';

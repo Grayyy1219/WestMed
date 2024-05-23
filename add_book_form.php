@@ -48,9 +48,10 @@
                         Upload Item Image <input type="file" id="img" name="bookImage" accept="image/*">
                     </label>
                 </div>
-                Item Name: <input type="text" name="title"><br>
+                Name: <input type="text" name="title"><br>
+                Description: <input type="text" name="description"><br>
                 Category: <select name="genre" id="genre">
-                    <?php foreach ($genres as $genre): ?>
+                    <?php foreach ($genres as $genre) : ?>
                         <option value="<?= $genre ?>" <?= $genre ?>>
                             <?= $genre ?>
                         </option>
@@ -63,14 +64,14 @@
         </div>
     </section>
     <script>
-        document.getElementById('img').addEventListener('change', function (event) {
+        document.getElementById('img').addEventListener('change', function(event) {
             const fileInput = event.target;
             const profileImage = document.getElementById('profileImage');
 
             const file = fileInput.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     profileImage.src = e.target.result;
                 };
                 reader.readAsDataURL(file);

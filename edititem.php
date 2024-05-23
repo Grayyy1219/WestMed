@@ -37,7 +37,7 @@
         }
     }
 
-    function updateBookDetails($con, $bookId,$title, $genre, $bookImage, $price, $solds)
+    function updateBookDetails($con, $bookId, $title, $genre, $bookImage, $price, $solds)
     {
         $sql = "UPDATE items SET ItemName=?, Category=?, ItemImage=?,  Price=?, Solds=? WHERE ItemID =?";
         $stmt = $con->prepare($sql);
@@ -47,7 +47,7 @@
         if ($stmt->errno) {
             echo "Error updating record: " . $stmt->error;
         } else {
-            echo "<script>alert('Book updated successfully!');</script>";
+            echo "<script>alert('Item updated successfully!');</script>";
             echo "<script>window.location.href = 'admin.php#inventory';</script>";
         }
 
@@ -79,7 +79,7 @@
         }
 
         // Additional validation can be added here for other form fields.
-    
+
         updateBookDetails($con, $bookId, $title, $genre, $bookImage, $price, $solds);
     }
 
@@ -93,55 +93,51 @@
         while ($genreRow = mysqli_fetch_assoc($genreResult)) {
             $genres[] = $genreRow['ItemCategory'];
         }
-        ?>
+    ?>
         <section>
             <div class="wrapper" id="w3">
                 <h2 style="font-size: 30px;">Edit Category Information</h2><br>
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>"
-                    enctype="multipart/form-data">
+                <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
                     <div class="weditimg" style="width: unset">
                         <?php
                         echo "<img id='profileImage' style='width: unset' src='" . htmlspecialchars($bookDetails['ItemImage']) . "' alt=''>";
                         ?>
                         <label class="btn-upload-img">
-                            Upload Book Cover <input type="file" id="img" name="bookImage" accept="image/*">
+                            Upload Item Image <input type="file" id="img" name="bookImage" accept="image/*">
                         </label>
                     </div>
                     <input type="hidden" name="bookId" value="<?php echo htmlspecialchars($bookDetails['ItemID']); ?>">
-                    Title: <input type="text" name="title"
-                        value="<?php echo htmlspecialchars($bookDetails['ItemName']); ?>"><br>
-                    Genre: <select name="genre" id="genre">
-                        <?php foreach ($genres as $genre): ?>
+                    Name: <input type="text" name="title" value="<?php echo htmlspecialchars($bookDetails['ItemName']); ?>"><br>
+                    Category: <select name="genre" id="genre">
+                        <?php foreach ($genres as $genre) : ?>
                             <option value="<?= htmlspecialchars($genre) ?>" <?php echo ($bookDetails['Category'] == $genre) ? 'selected' : ''; ?>>
                                 <?= htmlspecialchars($genre) ?>
                             </option>
                         <?php endforeach; ?>
                     </select><br>
 
-                    Price: <input type="text" name="price"
-                        value="<?php echo htmlspecialchars($bookDetails['Price']); ?>"><br>
-                    Solds: <input type="text" name="solds"
-                        value="<?php echo htmlspecialchars($bookDetails['Solds']); ?>"><br>
+                    Price: <input type="text" name="price" value="<?php echo htmlspecialchars($bookDetails['Price']); ?>"><br>
+                    Solds: <input type="text" name="solds" value="<?php echo htmlspecialchars($bookDetails['Solds']); ?>"><br>
                     <input type="submit" value="Update">
                 </form>
             </div>
         </section>
         <script>
-            document.getElementById('img').addEventListener('change', function (event) {
+            document.getElementById('img').addEventListener('change', function(event) {
                 const fileInput = event.target;
                 const profileImage = document.getElementById('profileImage');
 
                 const file = fileInput.files[0];
                 if (file) {
                     const reader = new FileReader();
-                    reader.onload = function (e) {
+                    reader.onload = function(e) {
                         profileImage.src = e.target.result;
                     };
                     reader.readAsDataURL(file);
                 }
             });
         </script>
-        <?php
+    <?php
     } else {
         echo "Book not found";
     }
