@@ -27,7 +27,6 @@ try {
     $mail->setFrom("$email", 'West Med');
     $mail->addAddress("$email", '');
 
-    // Generate a unique verification code 
     $verificationCode = rand(10000, 99999);
     $sql = "UPDATE users SET verification_code = '$verificationCode' WHERE email = '$email'";
     mysqli_query($con, $sql);
