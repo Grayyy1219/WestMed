@@ -154,8 +154,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         echo "Error updating order with product IDs: " . mysqli_error($con);
     }
-
-
     
     header('Location: orderdone.php');
     exit();

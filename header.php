@@ -78,8 +78,11 @@
                             <p>Change Password</p>
                         </div>
                     </a>
-
-
+                    <a href="history.php">
+                        <div class="inbtn">
+                            <p>Purchase history </p>
+                        </div>
+                    </a>
                     <br><br>
                     <a href="logout.php">
                         <div class="inbtn">

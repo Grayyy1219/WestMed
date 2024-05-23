@@ -32,8 +32,8 @@ $availableQuantity = $totalQuantity - $quantityInCart;
 
 if ($quantity > $availableQuantity) {
     $quantity = $availableQuantity;
-    echo '<script>alert("Apologies, we only have '.$availableQuantity.' units available in stock.\nAlso Try check.");</script>';
-    echo '<script>window.location.href = "cart.php";</script>';
+    echo '<script>alert("Apologies, we only have ' . $availableQuantity . ' units available in stock.\nAlso Try check.");</script>';
+    echo '<script>window.history.go(-2);</script>';
     exit();
 }
 if ($quantityInCart > 0) {
@@ -42,7 +42,7 @@ if ($quantityInCart > 0) {
 
     if (mysqli_query($con, $updateCartQuery)) {
         echo "<script>alert('Item successfully added to your cart!');</script>";
-        echo '<script>window.location.href = "cart.php";</script>';
+        echo '<script>window.history.go(-2);</script>';
     } else {
         echo "Error updating product quantity in the cart: " . mysqli_error($con);
     }
@@ -51,7 +51,7 @@ if ($quantityInCart > 0) {
 
     if (mysqli_query($con, $insertCartQuery)) {
         echo "<script>alert('Item successfully added to your cart!');</script>";
-        echo '<script>window.location.href = "cart.php";</script>';
+        echo '<script>window.history.go(-2);</script>';
     } else {
         echo "Error adding product to the cart: " . mysqli_error($con);
     }
