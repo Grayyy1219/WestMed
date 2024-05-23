@@ -6,7 +6,7 @@
         <a class="a" href="blockuser.php">Users</a><br>
         <a class="a" href="admin.php#inventory">Inventory</a>
         <a class="a" href="admin.php#dashboard">Fast & Slow</a>
-        <a class="a" href="paymenthistory.php">Payment</a><br>
+        <a class="a" href="paymenthistory.php?search=&start_date=&end_date=&submit=">Payment</a><br>
         <a class="a" href="printreport.php">Reports</a>
         <a onclick='showSettingsPopup()' class="a" href="#settings">Settings</a>
     </div>
