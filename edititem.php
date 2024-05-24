@@ -97,7 +97,7 @@
     ?>
         <section>
             <div class="wrapper" id="w3">
-                <h2 style="font-size: 30px;">Edit Category Information</h2><br>
+                <h2 style="font-size: 30px;">Edit Item Information</h2><br>
                 <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" enctype="multipart/form-data">
                     <div class="weditimg" style="width: unset">
                         <?php

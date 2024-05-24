@@ -60,7 +60,7 @@ $result = mysqli_query($con, $query);
 <table id="inventory-table">
 
     <tr>
-        <th>BookID</th>
+        <th>ID</th>
         <th>Product Name</th>
         <th>Cover</th>
         <th>Price</th>
