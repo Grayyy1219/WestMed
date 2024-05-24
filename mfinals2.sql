@@ -26,6 +26,8 @@ SET time_zone = "+00:00";
 --
 -- Table structure for table `cart`
 --
+CREATE Database mfinals2;
+Use mfinals2;
 
 CREATE TABLE `cart` (
   `cart_id` int(11) NOT NULL,
