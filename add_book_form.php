@@ -59,7 +59,7 @@
                 </select>
                 Price: <input type="text" name="price"><br>
                 Quantity: <input type="text" name="quantity"><br>
-                <input type="submit" value="Update">
+                <input type="submit" value="Add">
             </form>
         </div>
     </section>

@@ -191,8 +191,6 @@
     }
 </script>
 <script>
-    var sortValue;
-    var filterValue;
     var searchValue;
 
     document.getElementById('searchbar').addEventListener('keyup', function() {
@@ -210,10 +208,7 @@
         var xmlhttp = new XMLHttpRequest();
         xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
-                if (use == "search") {
-                    console.log("open Search function");
-                    getSearch(this);
-                }
+                getSearch(this);
             }
         };
         xmlhttp.open("GET", "product.php?search=" + searchValue, true);

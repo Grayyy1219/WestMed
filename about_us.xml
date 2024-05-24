@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AboutUs>
+    <Company>
+        <Name>WestMed</Name>
+        <Description>WestMed is the top e-commerce platform in the Philippines.</Description>
+        <Founded>2018</Founded>
+		
+        <Mission>Our mission is to enhance the accessibility, affordability, and convenience of healthcare shopping, 
+			ensuring that individuals and healthcare providers can easily find and purchase the medical supplies they need. 
+			By leveraging cutting-edge technology and a customer-centric approach, WestMed aims to simplify the online shopping experience, 
+			promote health and wellness, and contribute to the overall improvement of healthcare delivery in the Philippines.</Mission>
+			
+        <PrimaryGoal>The primary goal of WestMed is to become the leading healthcare e-commerce platform in the Philippines
+		by offering a seamless, secure, and efficient online shopping experience. 
+		We aim to ensure that customers have easy access to a diverse range of high-quality medical products and services, 
+		backed by robust customer support and reliable fulfillment processes.
+		Through continuous innovation and a commitment to excellence, 
+		WestMed strives to improve the overall shopping experience and contribute to the betterment of healthcare access and delivery in the region.</PrimaryGoal>
+		
+    </Company>
+    <Sections>
+        <Section title="Our Purpose">
+            <Content>The purpose of WestMed is to revolutionize the healthcare e-commerce landscape by providing a comprehensive, 
+			user-friendly platform that connects customers with high-quality medical products and services. 
+			</Content>
+        </Section>
+        <Section title="Our Positioning">
+            <Content>WestMed positions itself as the leading healthcare e-commerce platform in the Philippines, 
+			dedicated to providing an unparalleled shopping experience for medical supplies and health products. 
+			We aim to be the trusted partner for individuals, healthcare providers, 
+			and institutions by offering a comprehensive selection of quality products, competitive pricing, and exceptional customer service.</Content>
+        </Section>
+        <Section title="Customer Care">
+            <Links>
+                <Link>
+                    <Title>Contact Us</Title>
+                    <URL>http://localhost/WestMed/contact.html</URL>
+                </Link>
+                <Link>
+                    <Title>Payment Method</Title>
+                    <URL>http://localhost/WestMed/payment.html</URL>
+                </Link>
+                <Link>
+                    <Title>Help Centre</Title>
+                    <URL>http://localhost/WestMed/help.html</URL>
+                </Link>
+            </Links>
+        </Section>
+        <Section title="About WestMed">
+            <Links>
+                <Link>
+                    <Title>About Us</Title>
+                    <URL>http://localhost/WestMed/about.html</URL>
+                </Link>
+                <Link>
+                    <Title>WestMed</Title>
+                    <URL>http://localhost/WestMed/shopper.html</URL>
+                </Link>
+                <Link>
+                    <Title>WestMed Careers</Title>
+                    <URL>http://localhost/WestMed/careers.html</URL>
+                </Link>
+            </Links>
+        </Section>
+        <Section title="Find Us On">
+            <SocialMedia>
+                <Platform>
+                    <Name>Facebook</Name>
+                    <URL>http://facebook.com/westmed</URL>
+                </Platform>
+                <Platform>
+                    <Name>Instagram</Name>
+                    <URL>http://instagram.com/westmed</URL>
+                </Platform>
+                <Platform>
+                    <Name>Twitter</Name>
+                    <URL>http://twitter.com/westmed</URL>
+                </Platform>
+            </SocialMedia>
+        </Section>
+        <Section title="Payment">
+            <Methods>
+                <Method>PayPal</Method>
+                <Method>VISA</Method>
+                <Method>GCash</Method>
+                <Method>PayMaya</Method>
+            </Methods>
+        </Section>
+    </Sections>
+    <Footer>
+        <Copyright>2023 © WestMed</Copyright>
+    </Footer>
+</AboutUs>

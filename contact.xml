@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<website>
+    <header>
+        <title>WestMed</title>
+        <login>Log In Sign In</login>
+    </header>
+    
+    <contact-info>
+        <phone>+63932 449 6324</phone>
+        <email>info@westmed.com</email>
+        <address>123 Health Blvd, MediCity, ST 45678</address>
+    </contact-info>
+    
+    <contact-us>
+        <heading>Contact Us</heading>
+        <description>Any questions or remarks? Just write us a message!</description>
+        
+        <form>
+            <field>
+                <label>Name:</label>
+                <input type="text" name="name" />
+            </field>
+            <field>
+                <label>Email:</label>
+                <input type="text" name="email" />
+            </field>
+            <field>
+                <label>Phone Number:</label>
+                <input type="text" name="phone-number" />
+            </field>
+            <field>
+                <label>Message:</label>
+                <textarea name="message"></textarea>
+            </field>
+            <submit>Send Message</submit>
+        </form>
+    </contact-us>
+    
+    <customer-care>
+        <heading>CUSTOMER CARE</heading>
+        <link url="#">Contact Us</link>
+        <link url="#">Payment Method</link>
+        <link url="#">Help Centre</link>
+    </customer-care>
+    
+    <about-westmed>
+        <heading>ABOUT WESTMED</heading>
+        <link url="#">About Us</link>
+        <link url="#">WestMed Services</link>
+        <link url="#">Careers</link>
+    </about-westmed>
+    
+    <find-us>
+        <heading>FIND US ON</heading>
+        <social-media>
+            <link url="http://facebook.com/westmed">Facebook</link>
+            <link url="http://instagram.com/westmed">Instagram</link>
+            <link url="http://twitter.com/westmed">Twitter</link>
+        </social-media>
+    </find-us>
+    
+    <payment-methods>
+        <heading>Payment Methods:</heading>
+        <methods>
+            <method>PayPal</method>
+            <method>Visa</method>
+            <method>MasterCard</method>
+            <method>American Express</method>
+        </methods>
+    </payment-methods>
+    
+    <footer>
+        <copyright>COPYRIGHT 2024 © WestMed</copyright>
+    </footer>
+</website>

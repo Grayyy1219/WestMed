@@ -16,7 +16,7 @@
     <ABOUT_WestMed>
         <About_Us>
             <text>About Us</text>
-            <link>about.xml</link>
+            <link>about_us.xml</link>
         </About_Us>
         <Privacy_Policy>
             <text>Privacy Policy</text>
