@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_book'])) {
         $removeResult = mysqli_query($con, $removeQuery);
 
         if ($removeResult) {
-            echo "<script>alert('The book has been successfully marked as removed'); window.location.href = 'display_borrowed.php';</script>";
+            echo "<script>alert('The book has been successfully marked as removed'); window.location.href = 'display_history.php';</script>";
         } else {
             echo "Error: Unable to mark the book as removed. " . mysqli_error($con);
         }
@@ -22,4 +22,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['remove_book'])) {
         echo "Error: The book is not currently borrowed by $customer_name.";
     }
 }
-?>

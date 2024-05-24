@@ -54,14 +54,13 @@
                     echo "<script>alert('This book has no available stock')</script>";
                     echo "<script>window.history.back();</script>";
                 }
-
             } else {
                 echo '<script>alert("You have reached the maximum limit of borrowed books \n(Maximum of 3)")</script>';
-                echo '<script>window.location.href = "display_borrowed.php";</script>';
+                echo '<script>window.location.href = "display_history.php";</script>';
             }
         }
     } else {
-        echo '<script>alert("You have already borrowed this book."); window.location.href = "display_borrowed.php";</script>';
+        echo '<script>alert("You have already borrowed this book."); window.location.href = "display_history.php";</script>';
     }
     ?>
 

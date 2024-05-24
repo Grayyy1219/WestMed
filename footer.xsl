@@ -6,18 +6,20 @@
                 <div class="all-footer">
                     <!-- CUSTOMER SERVICE -->
                     <div class="CUSTOMER-SERVICE">
-                        <div class="text-wrapper">CUSTOMER SERVICE</div>
+                        <div class="text-wrapper">test</div>
                         <div class="frame3">
                             <!-- Payment Methods -->
                             <div class="list-item-link">
                                 <div class="div">
                                     <xsl:value-of select="/info/CUSTOMER_SERVICE/PaymentMethods/text"/>
+                                    <!-- xpath -->
                                 </div>
                             </div>
                             <!-- Return & Refund -->
                             <div class="return-refund-wrapper">
                                 <div class="return-refund">
                                     <xsl:value-of select="/info/CUSTOMER_SERVICE/ReturnRefund/text"/>
+                                    <!-- xpath -->
                                 </div>
                             </div>
                             <!-- Contact Us -->
@@ -25,6 +27,7 @@
                                 <a href="{/info/CUSTOMER_SERVICE/ContactUs/link}">
                                     <div class="text-wrapper-2">
                                         <xsl:value-of select="/info/CUSTOMER_SERVICE/ContactUs/text"/>
+                                        <!-- xpath -->
                                     </div>
                                 </a>
                             </div>
@@ -39,6 +42,7 @@
                                 <a href="{/info/ABOUT_WestMed/About_Us/link}">
                                     <div class="text-wrapper-4">
                                         <xsl:value-of select="/info/ABOUT_WestMed/About_Us/text"/>
+                                        <!-- xpath -->
                                     </div>
                                 </a>
                             </div>
@@ -46,12 +50,14 @@
                             <div class="list-item-link-3">
                                 <div class="text-wrapper-5">
                                     <xsl:value-of select="/info/ABOUT_WestMed/Privacy_Policy/text"/>
+                                    <!-- xpath -->
                                 </div>
                             </div>
                             <!-- Flash Deals -->
                             <div class="list-item-link-4">
                                 <div class="text-wrapper-6">
                                     <xsl:value-of select="/info/ABOUT_WestMed/Flash_Deals/text"/>
+                                    <!-- xpath -->
                                 </div>
                             </div>
                         </div>
@@ -107,7 +113,7 @@
                         <div class="facebook">
                             <div class="eabe">.</div>
                             <div class="span-facebook">
-                                <a href="{/info/FOLLOW_US/Facebook/link}">
+                                <a href="{/info/FOLLOW_US/Facebook/link}">                                    <!-- xpath -->
                                     <div class="text-wrapper-10">Facebook</div>
                                 </a>
                             </div>
@@ -115,7 +121,7 @@
                         <div class="instagram">
                             <div class="e">.</div>
                             <div class="span-instagram">
-                                <a href="{/info/FOLLOW_US/Instagram/link}">
+                                <a href="{/info/FOLLOW_US/Instagram/link}">                                    <!-- xpath -->
                                     <div class="text-wrapper-11">Instagram</div>
                                 </a>
                             </div>

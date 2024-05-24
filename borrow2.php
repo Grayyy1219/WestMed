@@ -53,7 +53,7 @@
         <br>
         <div class="btnb">
             <a href="Landing page.php"><button>Home</button></a>
-            <a href="display_borrowed.php"><button style="background-color: #5dae87;">My Books</button></a>
+            <a href="display_history.php"><button style="background-color: #5dae87;">My Books</button></a>
         </div>
     </section>
 </body>

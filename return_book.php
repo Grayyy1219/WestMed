@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book']) && iss
     $book_id = $_POST['BookID'];
 
     $returnBookQuery = "UPDATE borrow SET returned = 1 WHERE book_id = $book_id AND customer_name = '$FName $LName'";
-    
+
     $returnBookResult = mysqli_query($con, $returnBookQuery);
 
 
@@ -19,7 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book']) && iss
 
         if ($updateQuantityResult) {
             // Redirect back to the borrowed books page with a success message
-            header("Location: display_borrowed.php?returned=1");
+            header("Location: display_history.php?returned=1");
             exit();
         } else {
             echo '<script>alert("Error updating book quantity: ' . mysqli_error($conn) . '");</script>';
@@ -30,4 +30,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['return_book']) && iss
 } else {
     echo '<script>alert("Invalid request.");</script>';
 }
-?>

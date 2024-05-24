@@ -11,7 +11,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $pdf->SetAutoPageBreak(true, 10);
     $pdf->AddPage();
     $pdf->SetFont('helvetica', '', 16);
-    $pdf->Cell(0, 15, 'Swiftie Shopper', 0, 1, 'C');
+    $pdf->Cell(0, 15, 'West Med', 0, 1, 'C');
 
     $reportQuery = "";
 
@@ -35,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         orders o ON b.ItemID = o.product_id
     GROUP BY
         g.Itemcategory";
-
     } elseif ($reportType == 'product_inventory') {
         $reportQuery = "SELECT b.ItemID, b.ItemName, b.quantity AS available_stocks, SUM(b.quantity) OVER () AS total_stocks FROM items b";
     } elseif ($reportType == 'registered_customers') {
@@ -75,16 +74,16 @@ ob_end_flush();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/printreport.css">
-        <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin.css">
 
     <link rel="icon" href="Image/logo.ico">
     <style>
-        
+
     </style>
 </head>
 
 <body>
-<?php include 'aheader.php'; ?>
+    <?php include 'aheader.php'; ?>
     <h1>Admin Sales Report</h1>
     <div class="report-container">
         <form method="post" action="">
