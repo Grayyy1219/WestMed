@@ -9,191 +9,167 @@ if (!isset($_SESSION['selectedItems'])) {
 }
 
 $selectedItems = $_SESSION['selectedItems'];
+$totalPurchaseValue = 0;
+$descriptionParts = [];
 
-$getSelectedItemsQuery = "SELECT items.ItemID, items.ItemName, items.price, cart.quantity 
- FROM cart 
- INNER JOIN items ON cart.ItemID = items.ItemID 
- WHERE cart.customer_id = ? AND cart.cart_id IN ($selectedItems)";
+$query = "
+    SELECT items.ItemID, items.ItemName, items.price, cart.quantity 
+    FROM cart 
+    INNER JOIN items ON cart.ItemID = items.ItemID 
+    WHERE cart.customer_id = ? AND cart.cart_id IN ($selectedItems)";
 
-$stmtGetSelectedItems = mysqli_prepare($con, $getSelectedItemsQuery);
-mysqli_stmt_bind_param($stmtGetSelectedItems, "i", $UserID);
-mysqli_stmt_execute($stmtGetSelectedItems);
-$result = mysqli_stmt_get_result($stmtGetSelectedItems);
+$stmt = mysqli_prepare($con, $query);
+mysqli_stmt_bind_param($stmt, "i", $UserID);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
 if (!$result) {
-    echo "Error retrieving selected items: " . mysqli_error($con);
+    echo "Error retrieving items: " . mysqli_error($con);
     exit();
 }
-
-$totalPurchaseValue = 0;
 
 while ($row = mysqli_fetch_assoc($result)) {
     $totalPurchaseValue += $row['quantity'] * $row['price'];
+    $descriptionParts[] = "{$row['ItemName']} x {$row['quantity']}";
 }
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $paymentMode = isset($_POST['paymentMode']) ? $_POST['paymentMode'] : null;
+$description = implode(", ", $descriptionParts);
 
-    // Insert order record
-    $saveOrderQuery = "INSERT INTO orders (customer_id, order_date, total_amount, order_quantity)
-  VALUES (?, CURRENT_TIMESTAMP, ?, ?)";
+// Setting the amount and remark with item details
+$amountInCents = (int) ($totalPurchaseValue * 100);
 
-    $stmtSaveOrder = mysqli_prepare($con, $saveOrderQuery);
+$paymongoData = [
+    'data' => [
+        'attributes' => [
+            'amount' => $amountInCents,
+            'description' => $description,
+            'remarks' => "Items Ordered: $description" // Reflecting item details in remarks
+        ]
+    ]
+];
 
-    if ($stmtSaveOrder) {
-        // Bind parameters
-        mysqli_stmt_bind_param($stmtSaveOrder, "idd", $UserID, $totalAmount, $orderQuantity);
+$curl = curl_init();
+curl_setopt_array($curl, [
+    CURLOPT_URL => "https://api.paymongo.com/v1/links",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => json_encode($paymongoData),
+    CURLOPT_HTTPHEADER => [
+        "accept: application/json",
+        "authorization: Basic c2tfdGVzdF9CUmp3eW8xdmZHOE00Rzg1bUF1VHdtZXo6",
+        "content-type: application/json"
+    ],
+]);
 
-        // Insert order with multiple product IDs
-        $totalAmount = $totalPurchaseValue;
-        $orderQuantity = 0;
+$response = curl_exec($curl);
+$err = curl_error($curl);
+curl_close($curl);
 
-        mysqli_stmt_execute($stmtSaveOrder);
-
-        $orderId = mysqli_insert_id($con);
-
-        // Reset result pointer
-        mysqli_data_seek($result, 0);
-
-        while ($row = mysqli_fetch_assoc($result)) {
-            $productId = $row['ItemID'];
-            $orderQuantity += $row['quantity'];
-
-            // Update order with product IDs
-            $updateOrderQuery = "UPDATE orders SET product_id = CONCAT(product_id, ',', ?) WHERE order_id = ?";
-            $stmtUpdate = mysqli_prepare($con, $updateOrderQuery);
-
-            if ($stmtUpdate) {
-                mysqli_stmt_bind_param($stmtUpdate, "si", $productId, $orderId);
-                mysqli_stmt_execute($stmtUpdate);
-                mysqli_stmt_close($stmtUpdate);
-            } else {
-                echo "Error updating order with product IDs: " . mysqli_error($con);
-            }
-        }
-
-        mysqli_stmt_close($stmtSaveOrder);
-    } else {
-        echo "Error preparing order query: " . mysqli_error($con);
-    }
-
-    $savePaymentQuery = "INSERT INTO payment (order_id, customer_id, payment_mode, amount_paid) 
- VALUES (?, ?, ?, ?)";
-
-    $stmtSavePayment = mysqli_prepare($con, $savePaymentQuery);
-
-    if ($stmtSavePayment) {
-        mysqli_stmt_bind_param($stmtSavePayment, "iisd", $orderId, $UserID, $paymentMode, $totalPurchaseValue);
-
-        $resultSavePayment = mysqli_stmt_execute($stmtSavePayment);
-
-        if ($resultSavePayment) {
-            echo "Payment details saved successfully.";
-        } else {
-            echo "Error saving payment details: " . mysqli_error($con);
-        }
-
-        mysqli_stmt_close($stmtSavePayment);
-    } else {
-        echo "Error preparing payment details statement: " . mysqli_error($con);
-    }
-
-    // Reset result pointer
-    mysqli_data_seek($result, 0);
-
-    // Initialize arrays to store product IDs and quantities
-    $productIDs = array();
-    $quantities = array();
-
-    while ($row = mysqli_fetch_assoc($result)) {
-        $productId = $row['ItemID'];
-        $quantity = $row['quantity'];
-
-        // Deduct quantity and update sold count in a single query
-        $updateitemsQuery = "UPDATE items SET quantity = quantity - ?, Solds = Solds + ? WHERE ItemID = ?";
-        $stmtUpdateitems = mysqli_prepare($con, $updateitemsQuery);
-
-        if ($stmtUpdateitems) {
-            mysqli_stmt_bind_param($stmtUpdateitems, "iii", $quantity, $quantity, $productId);
-            mysqli_stmt_execute($stmtUpdateitems);
-            mysqli_stmt_close($stmtUpdateitems);
-
-            // Collect product IDs and quantities
-            $productIDs[] = $productId;
-            $quantities[] = $quantity;
-        } else {
-            echo "Error updating quantity and sold count: " . mysqli_error($con);
-        }
-    }
-
-    // Combine product IDs and quantities into a single string
-    $productIDsString = implode(',', $productIDs);
-    $quantitiesString = implode(',', $quantities);
-
-    // Update order table with collected product IDs and quantities
-    $updateOrderQuery = "UPDATE orders SET product_id = ?, order_quantity = ? WHERE order_id = ?";
-    $stmtUpdateOrder = mysqli_prepare($con, $updateOrderQuery);
-
-    if ($stmtUpdateOrder) {
-        mysqli_stmt_bind_param($stmtUpdateOrder, "ssi", $productIDsString, $quantitiesString, $orderId);
-        mysqli_stmt_execute($stmtUpdateOrder);
-        mysqli_stmt_close($stmtUpdateOrder);
-    } else {
-        echo "Error updating order with product IDs and quantities: " . mysqli_error($con);
-    }
-
-    // Update order table with collected product IDs
-    $productIDsString = implode(',', $productIDs);
-    $updateOrderQuery = "UPDATE orders SET product_id = ? WHERE order_id = ?";
-    $stmtUpdateOrder = mysqli_prepare($con, $updateOrderQuery);
-
-    if ($stmtUpdateOrder) {
-        mysqli_stmt_bind_param($stmtUpdateOrder, "si", $productIDsString, $orderId);
-        mysqli_stmt_execute($stmtUpdateOrder);
-        mysqli_stmt_close($stmtUpdateOrder);
-    } else {
-        echo "Error updating order with product IDs: " . mysqli_error($con);
-    }
-
-    header('Location: orderdone.php');
+if ($err) {
+    echo "cURL Error #:" . $err;
     exit();
 }
+
+$result = json_decode($response, true);
+
+if (!isset($result['data']['attributes']['checkout_url'])) {
+    echo "Failed to get checkout URL. Response: " . $response;
+    exit();
+}
+
+$checkoutUrl = $result['data']['attributes']['checkout_url'];
+$referenceNumber = $result['data']['attributes']['reference_number'];
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment</title>
-    <link rel="stylesheet" href="css/swiftieshopper.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/payment.css">
+    <title>Redirecting to Payment</title>
+    <script>
+        window.open("<?php echo $checkoutUrl; ?>", "_blank");
+
+        function showModal(message, isSuccess) {
+            const modal = document.getElementById('paymentModal');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalHeader = document.getElementById('modalHeader');
+            const closeButton = document.getElementById('closeButton');
+
+            modal.style.display = "block";
+            modalMessage.innerHTML = message;
+            if (isSuccess) {
+                modalHeader.textContent = "Payment Success";
+                closeButton.classList.remove("btn-close");
+                closeButton.classList.add("btn");
+                closeButton.textContent = "Close";
+            } else {
+                modalHeader.textContent = "Pending Payment";
+                closeButton.classList.remove("btn");
+                closeButton.classList.add("btn-close");
+                closeButton.textContent = "Try Again";
+            }
+        }
+
+        function checkPaymentStatus() {
+            const referenceNumber = "<?php echo $referenceNumber; ?>";
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", `https://api.paymongo.com/v1/links?reference_number=${referenceNumber}`, true);
+            xhr.setRequestHeader("accept", "application/json");
+            xhr.setRequestHeader("authorization", "Basic c2tfdGVzdF9CUmp3eW8xdmZHOE00Rzg1bUF1VHdtZXo6");
+
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    const response = JSON.parse(xhr.responseText);
+
+                    if (response.data && response.data.length > 0) {
+                        const paymentStatus = response.data[0].attributes.status;
+                        const referenceNumber = response.data[0].attributes.reference_number;
+
+                        let message = `Reference Number: ${referenceNumber}<br>`;
+
+                        if (paymentStatus === "paid") {
+                            window.location.href = "orderdone.php";
+                            return;
+                        } else {
+                            message += "Payment not completed yet. Please complete the payment.";
+                            showModal(message, false);
+                        }
+                    } else {
+                        showModal("Error: Payment status not found.", false);
+                    }
+                } else if (xhr.readyState === 4) {
+                    showModal("Error: " + xhr.statusText, false);
+                }
+            };
+
+            xhr.send();
+        }
+
+        function closeModal() {
+            document.getElementById('paymentModal').style.display = "none";
+        }
+    </script>
 </head>
 
 <body>
-    <?php include("header.php"); ?>
-    <section>
-        <div class="wrapper" id="w3">
-            <div class="payment-container">
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" class="payment-form">
-                    <div class="form-group"> <label for="paymentMode">Payment Mode:</label> <select name="paymentMode" id="paymentMode" required>
-                            <?php
-                            $sql = "SELECT method_name FROM paymethod";
-                            $result = $con->query($sql);
-                            if ($result->num_rows > 0) {
-                                while ($row = $result->fetch_assoc()) {
-                                    echo '<option value="' . $row["method_name"] . '">' . $row["method_name"] . '</option>';
-                                }
-                            }
+    <h2>Redirecting to Payment...</h2>
+    <p>The payment page has opened in a new tab. Once you've completed the payment, click the button below to confirm.</p>
+    <button onclick="checkPaymentStatus()">Check Payment Status</button>
 
-                            ?>
-                        </select> </div>
-                    <div class="payment-button"> <button style="font-weight:bold; font-size:20px;background-color: forestgreen; color: white; padding: 20px;border: none; border-radius: 5px;" type="submit">Submit Payment</button> </div>
-                </form>
+    <!-- Modal -->
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header" id="modalHeader">Payment Status</div>
+            <div class="modal-body" id="modalMessage"></div>
+            <div class="modal-footer">
+                <button id="closeButton" class="btn btn-close" onclick="closeModal()">Close</button>
             </div>
         </div>
-    </section>
+    </div>
 </body>
 
 </html>
