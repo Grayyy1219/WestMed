@@ -84,6 +84,76 @@ $referenceNumber = $result['data']['attributes']['reference_number'];
 
 <!DOCTYPE html>
 <html lang="en">
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        background: #f4f7f9;
+        text-align: center;
+        padding: 50px 20px;
+    }
+
+    h2 {
+        color: #333;
+    }
+
+    button {
+        padding: 10px 20px;
+        margin-top: 20px;
+        font-size: 16px;
+        background: #007bff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        background: #0056b3;
+    }
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 10;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        justify-content: center;
+        align-items: center;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: 10px;
+        padding: 30px;
+        width: 90%;
+        max-width: 400px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+    }
+
+    .modal-body {
+        font-size: 16px;
+        margin-bottom: 20px;
+    }
+
+    .btn {
+        background-color: #28a745;
+        color: white;
+    }
+
+    .btn-close {
+        background-color: #dc3545;
+        color: white;
+    }
+</style>
 
 <head>
     <meta charset="UTF-8">
