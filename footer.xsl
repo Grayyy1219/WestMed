@@ -113,7 +113,7 @@
                         <div class="facebook">
                             <div class="eabe">.</div>
                             <div class="span-facebook">
-                                <a href="{/info/FOLLOW_US/Facebook/link}">                                    <!-- xpath -->
+                                <a target="_blank" href="{/info/FOLLOW_US/Facebook/link}">                                    <!-- xpath -->
                                     <div class="text-wrapper-10">Facebook</div>
                                 </a>
                             </div>
@@ -121,7 +121,7 @@
                         <div class="instagram">
                             <div class="e">.</div>
                             <div class="span-instagram">
-                                <a href="{/info/FOLLOW_US/Instagram/link}">                                    <!-- xpath -->
+                                <a target="_blank" href="{/info/FOLLOW_US/Instagram/link}">                                    <!-- xpath -->
                                     <div class="text-wrapper-11">Instagram</div>
                                 </a>
                             </div>
@@ -129,13 +129,17 @@
                         <div class="twitter">
                             <div class="c">.</div>
                             <div class="span-twitter">
-                                <div class="text-wrapper-12">Twitter</div>
+                                <a target="_blank" href="{/info/FOLLOW_US/Twitter/link}">
+                                    <div class="text-wrapper-12">Twitter</div>
+                                </a>
                             </div>
                         </div>
                         <div class="linked-in">
                             <div class="element">.</div>
                             <div class="span-linkedin">
-                                <div class="text-wrapper-13">LinkedIn</div>
+                                <a target="_blank" href="{/info/FOLLOW_US/LinkedIn/link}">
+                                    <div class="text-wrapper-13">LinkedIn</div>
+                                </a>
                             </div>
                         </div>
                     </div>

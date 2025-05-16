@@ -1,8 +1,10 @@
 section#a_dashboard {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   min-height: 50vh;
+  margin: 60px;
+  box-sizing: border-box;
 }
 .dashboard_con {
   display: flex;
@@ -13,13 +15,29 @@ section#a_dashboard {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  align-items: center;
+  align-items: flex-start;
   aspect-ratio: 3 / 1;
-  width: 150px;
-  background-color: #d4d4d4;
+  width: 400px;
+  border: solid 1px #888;
+  padding: 20px;
 }
-.count_con {
+.num_count {
+  font-size: 36px;
+}
+.slideleft {
   display: flex;
-  gap: 10px;
-  padding: 20px 10px;
+  font-size: 36px;
+  gap: 5px;
+}
+.dash_h1 {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  padding: 40px 10px;
+  margin: 30px 0;
+  background: gray;
+  color: white;
+}
+canvas#salesChart {
+  width: 50vw !important;
 }
