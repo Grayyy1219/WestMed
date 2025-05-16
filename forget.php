@@ -22,8 +22,8 @@ if ($result->num_rows > 0) { // Fix: use > 0 instead of > 1
         $mail->isSMTP();
         $mail->Host       = 'smtp.gmail.com';
         $mail->SMTPAuth   = true;
-        $mail->Username = 'westmed.shopnoreply@gmail.com';
-        $mail->Password = 'gkll chyg hsas njxv';
+        $mail->Username = 'aylietsugu@gmail.com';
+        $mail->Password = 'sajk dwbq mrrk qjde';
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
 

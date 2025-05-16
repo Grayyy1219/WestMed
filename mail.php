@@ -18,8 +18,8 @@ try {
     $mail->isSMTP();
     $mail->Host       = 'smtp.gmail.com';
     $mail->SMTPAuth   = true;
-    $mail->Username = 'westmed.shopnoreply@gmail.com';
-    $mail->Password = 'gkll chyg hsas njxv';
+    $mail->Username = 'aylietsugu@gmail.com';
+    $mail->Password = 'sajk dwbq mrrk qjde';
     $mail->SMTPSecure = 'ssl';
     $mail->Port       = 465;
 
