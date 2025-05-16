@@ -6,6 +6,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="css/admin.css">
     <link rel="stylesheet" href="css/Inventory.css">
+    <link rel="stylesheet" href="css/dashboard.css">
     <link rel="icon" href="Image/logo.ico">
 
 
@@ -24,6 +25,25 @@ echo "<style>
 
 <body>
     <?php include 'aheader.php'; ?>
+    <section id="a_dashboard">
+        <h1 style="font-size: 50px">Dashboard</h1>
+        <div class="dashboard_con">
+            <div class="dashboard_left">
+                <div class="count_con">
+                    <div class="count">0</div>
+                    Products
+                </div>
+                <div class="count_link"><a href="#inventory">View</a></div>
+            </div>
+            <div class="dashboard_right">
+                <div class="count_con">
+                    <div class="count">0</div>
+                    Solds
+                </div>
+                <div class="count_link"><a href="">View</a></div>
+            </div>
+        </div>
+    </section>
     <section id="page" style="min-height: 90vh;">
         <center>
             <h1 style="font-size: 50px">Customer Page</h1>
