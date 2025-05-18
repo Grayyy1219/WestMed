@@ -11,9 +11,9 @@ $newCustomers = $customersResult->fetch_assoc()['new_customers'] ?? 0;
 
 $soldQuery = "
     SELECT ItemName AS name, Solds AS sold 
-    FROM items 
+    FROM items where Solds != 0
     ORDER BY Solds DESC 
-    LIMIT 20";
+    LIMIT 10";
 $soldResult = $con->query($soldQuery);
 
 $itemNames = [];
@@ -36,12 +36,24 @@ while ($row = $soldResult->fetch_assoc()) {
         <div class="num_titlee">Total Orders</div>
     </div>
     <div class="dashboard_count">
-        <div class="num_count"><?= $newCustomers ?></div>
+        <div class="num_count"><?= $newCustomers - 1 ?></div>
         <div class="num_titlee">New Customers</div>
+    </div>
+    <div class="dashboard_count">
+        <div class="num_count"><?= $itemNames[0] ?></div>
+        <div class="num_titlee">Top Solds</div>
+    </div>
+
+</div>
+<div class="graphs_group">
+    <div class="canvas_fastmoving">
+        <canvas id="salesChart"></canvas>
+    </div>
+    <div class="canvas_fastmoving">
+        <canvas id="salesChart"></canvas>
     </div>
 </div>
 
-<canvas id="salesChart"></canvas>
 
 <script>
     const ctx = document.getElementById('salesChart').getContext('2d');
@@ -50,19 +62,62 @@ while ($row = $soldResult->fetch_assoc()) {
         data: {
             labels: <?= json_encode($itemNames) ?>,
             datasets: [{
-                label: 'Most Sold Items',
+                label: 'Solds',
                 data: <?= json_encode($itemSolds) ?>,
-                backgroundColor: 'rgba(54, 162, 235, 0.7)',
-                borderColor: 'rgba(54, 162, 235, 1)',
+                backgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0',
+                    '#9966FF', '#FF9F40', '#C9CBCF', '#8DD1E1',
+                    '#FF7F50', '#90EE90'
+                ],
+                borderColor: '#333',
                 borderWidth: 1,
+                hoverBackgroundColor: [
+                    '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0',
+                    '#9966FF', '#FF9F40', '#C9CBCF', '#8DD1E1',
+                    '#FF7F50', '#90EE90'
+                ],
             }]
         },
         options: {
-            responsive: false,
+            responsive: true,
+            indexAxis: 'y',
             scales: {
-                y: {
+                x: {
                     beginAtZero: true,
-                    precision: 0
+                    ticks: {
+                        color: '#333',
+                        font: {
+                            size: 12,
+                            weight: 'bold'
+                        }
+                    },
+                    grid: {
+                        display: false
+                    }
+                },
+                y: {
+                    ticks: {
+                        color: '#333',
+                        font: {
+                            size: 9,
+                            weight: 'bold'
+                        }
+                    }
+                }
+            },
+            plugins: {
+                legend: {
+                    display: false,
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.dataset.label || '';
+                            let value = context.parsed.x || 0;
+                            return `${label}: ${value}`;
+                        }
+                    }
                 }
             }
         }

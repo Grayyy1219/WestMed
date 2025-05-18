@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/editpass.css">
     <link rel="icon" href="Image/logo.ico">
-
     <?php
     include("connect.php");
     include("query.php");
@@ -71,19 +70,17 @@
             var newPassword = document.getElementById('newpass').value;
             var confirmPassword = document.getElementById('confirmpass').value;
             var passwordInputs = document.querySelectorAll('.password-input');
-
             if (newPassword !== confirmPassword) {
                 alert("New Password and Confirm Password must match!");
-                passwordInputs.forEach(function (element) {
+                passwordInputs.forEach(function(element) {
                     element.classList.add('password-mismatch');
                 });
                 return false; // prevent form submission
             } else {
-                passwordInputs.forEach(function (element) {
+                passwordInputs.forEach(function(element) {
                     element.classList.remove('password-mismatch');
                 });
             }
-
             return true; // allow form submission
         }
 
@@ -91,14 +88,14 @@
             document.getElementById('SettingsPopup').style.display = 'none';
             var overlay = document.querySelector('.popup-overlay');
             overlay.style.opacity = 0;
-            setTimeout(function () {
+            setTimeout(function() {
                 overlay.style.display = 'none';
             }, 300);
         }
 
         function showSettingsPopup() {
             document.getElementById("SettingsPopup").style.display = "block";
-            setTimeout(function () {
+            setTimeout(function() {
                 document.getElementById("spopup-overlay").style.display = "block";
             }, 10);
         }
@@ -107,14 +104,13 @@
             document.getElementById("spopup-overlay").style.display = "none";
             document.getElementById("SettingsPopup").style.display = "none";
         }
-        document.getElementById('img').addEventListener('change', function (event) {
+        document.getElementById('img').addEventListener('change', function(event) {
             const fileInput = event.target;
             const profileImage = document.getElementById('profileImage');
-
             const file = fileInput.files[0];
             if (file) {
                 const reader = new FileReader();
-                reader.onload = function (e) {
+                reader.onload = function(e) {
                     profileImage.src = e.target.result;
                 };
                 reader.readAsDataURL(file);

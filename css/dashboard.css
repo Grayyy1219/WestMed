@@ -9,6 +9,8 @@ section#a_dashboard {
 .dashboard_con {
   display: flex;
   gap: 20px;
+  width: 100%;
+  justify-content: space-between;
 }
 
 .dashboard_con > div {
@@ -29,6 +31,12 @@ section#a_dashboard {
   font-size: 36px;
   gap: 5px;
 }
+.slideright {
+  display: flex;
+  flex-direction: col;
+  font-size: 36px;
+  gap: 5px;
+}
 .dash_h1 {
   display: flex;
   width: 100%;
@@ -38,6 +46,16 @@ section#a_dashboard {
   background: gray;
   color: white;
 }
-canvas#salesChart {
-  width: 50vw !important;
+.canvas_fastmoving {
+  box-sizing: border-box;
+  border: solid 1px #888;
+  width: 100%;
+  padding: 20px;
+  margin-top: 20px;
+}
+.graphs_group {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  height: auto;
 }
