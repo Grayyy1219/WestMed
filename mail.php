@@ -31,7 +31,7 @@ try {
     $sql = "UPDATE users SET verification_code = '$verificationCode' WHERE email = '$email'";
     mysqli_query($con, $sql);
     // Include the verification code in the link
-    $verificationLink = "http://localhost/westmed/verify.php?code=$verificationCode";
+    $verificationLink = "westmedph.site/verify.php?code=$verificationCode";
 
     // Set the email content
     $mail->isHTML(true);
