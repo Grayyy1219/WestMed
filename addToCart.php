@@ -9,7 +9,7 @@ include 'query.php';
 $productName = mysqli_real_escape_string($con, $_POST['Itemname']);
 $quantity = mysqli_real_escape_string($con, $_POST['quantity']);
 
-$getProductQuery = "SELECT * FROM Items WHERE ItemName = '$productName' LIMIT 1";
+$getProductQuery = "SELECT * FROM items WHERE ItemName = '$productName' LIMIT 1";
 $productResult = mysqli_query($con, $getProductQuery);
 
 if (!$productResult) {
