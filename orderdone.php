@@ -99,22 +99,24 @@ try {
     mysqli_rollback($con);
     die("Transaction failed: " . $e->getMessage());
 }
+
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-require 'C:\xampp\htdocs\WestMed\PHPMailer\src\Exception.php';
-require 'C:\xampp\htdocs\WestMed\PHPMailer\src\PHPMailer.php';
-require 'C:\xampp\htdocs\WestMed\PHPMailer\src\SMTP.php';
+
+require 'PHPMailer/src/Exception.php';
+require 'PHPMailer/src/PHPMailer.php';
+require 'PHPMailer/src/SMTP.php';
 $mail = new PHPMailer(true);
 try {
-    $mail->SMTPDebug = SMTP::DEBUG_SERVER;
+    $mail->SMTPDebug    = SMTP::DEBUG_SERVER;
     $mail->isSMTP();
-    $mail->Host       = 'smtp.gmail.com';
-    $mail->SMTPAuth   = true;
-    $mail->Username = 'noreply.thebookhaven@gmail.com';
-    $mail->Password = 'glyt mguu ymqy noks';
-    $mail->SMTPSecure = 'ssl';
-    $mail->Port       = 465;
+    $mail->Host         = 'smtp.gmail.com';
+    $mail->SMTPAuth     = true;
+    $mail->Username     = 'noreply.thebookhaven@gmail.com';
+    $mail->Password     = 'glyt mguu ymqy noks';
+    $mail->SMTPSecure   = 'ssl';
+    $mail->Port         = 465;
     $mail->setFrom("$email", 'West Med');
     $mail->addAddress("$email", '');
     $mail->isHTML(true);
