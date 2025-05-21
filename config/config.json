@@ -1,6 +1,14 @@
 {
-  "db_host": "localhost",
-  "db_user": "u801377270_westmed_db2025",
-  "db_pass": "Westmed_db2025",
-  "db_name": "u801377270_westmed_db2025"
+  "production": {
+    "db_host": "localhost",
+    "db_user": "u801377270_westmed_db2025",
+    "db_pass": "Westmed_db2025",
+    "db_name": "u801377270_westmed_db2025"
+  },
+  "local": {
+    "db_host": "localhost",
+    "db_user": "root",
+    "db_pass": "",
+    "db_name": "mfinals2"
+  }
 }

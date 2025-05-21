@@ -180,9 +180,6 @@ footer {
     min-height: 500px;
     border-radius: 5px;
     justify-content: center;
-}
-
-.itemcard {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -195,6 +192,8 @@ footer {
     border-radius: 5px;
     justify-content: space-between;
 }
+
+
 
 .itemcard:hover {
     transition: all 0.5s ease;
