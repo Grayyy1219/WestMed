@@ -14,8 +14,8 @@ if ($result) {
 
         if ($countResult) {
             $totalRecords = mysqli_fetch_row($countResult)[0];
-                echo "  <a href='category.php?category=$categoryName'><div class='itemcard'>
-               <img src='$categoryImg' width='200'>
+            echo "  <a href='category.php?category=$categoryName'><div class='itemcard'>
+               <img src='$categoryImg'>
                 <p>$totalRecords Items/s available</p>
                 <p><strong>$categoryName</strong></p>
             </div></a>";
@@ -28,4 +28,3 @@ if ($result) {
 } else {
     echo "Error fetching genres from the database: " . mysqli_error($con);
 }
-?>
