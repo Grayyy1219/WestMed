@@ -40,9 +40,8 @@
 
         // HTML output
         echo "<div class='itemcard'>
-                <a href=''><img src='{$ItemImage}' width='200'></a>
-                <p><strong>{$shortenedTitle}</strong></p>
-                <br><br>
+                <img src='{$ItemImage}' width='200'>
+                <strong style='text-align: center;margin: 10px 0 0;'>{$shortenedTitle}</strong>
                 <p style='font-size: small'>Stocks {$Quantity}</p><br>
                 <h4>₱{$Price}</h4>
                <div class='div-282' onclick=\"submitForm('itempage.php?Itemname=$ItemName&Category=$category&ItemImage=$ItemImage&Price=$Price&Solds=$Solds&Quantity=$Quantity&ItemID=$ItemID&Description=$Description')\">
