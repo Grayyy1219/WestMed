@@ -124,9 +124,10 @@ $result = mysqli_query($con, $getCartItemsQuery);
                     }
                     ?>
                     <div class="cart-total">
+                        <p>Total Selected Item Price: PHP <span id="totalCartValue">0.00</span></p>
                         <button type="submit" name="deleteSelected" formaction="deleteCartItem.php" onclick="return confirmAction()">Remove Selected</button>
                         <button type="submit" name="buySelected" formaction="processCartAction.php">Buy Now</button>
-                        <p>Total Selected Item Price: PHP <span id="totalCartValue">0.00</span></p>
+
                     </div>
                 </form>
             </div>
