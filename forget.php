@@ -27,10 +27,10 @@ if ($result->num_rows > 0) { // Fix: use > 0 instead of > 1
         $mail->SMTPSecure = 'ssl';
         $mail->Port       = 465;
 
-        $mail->setFrom("$email", 'West Med');
-        $mail->addAddress("$email", '');
+        $mail->setFrom("$resetemail", 'West Med');
+        $mail->addAddress("$resetemail", '');
 
-        $reset_link = "http://localhost/WestMed/resetpassword.php?email=$resetemail";
+        $reset_link = "http://westmedph.site/resetpassword.php?email=$resetemail";
         $message = '
         <html>
         <body>
