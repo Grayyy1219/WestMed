@@ -2,7 +2,7 @@
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
-require_once('tcpdf/tcpdf.php');
+require_once('TCPDF/tcpdf.php');
 include 'connect.php';
 include 'query.php';
 
