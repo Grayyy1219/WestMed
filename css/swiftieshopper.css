@@ -207,7 +207,18 @@ footer {
   gap: 20px;
   flex-wrap: wrap;
 }
-
+.shop .itemcard {
+  display: flex;
+  border: solid 1px #969696;
+  height: 330px;
+  aspect-ratio: 3 / 4;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 4px 7px 10px -5px black;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
 * {
   box-sizing: border-box;
 }
