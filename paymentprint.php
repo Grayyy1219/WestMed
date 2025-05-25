@@ -1,5 +1,8 @@
 <?php
-require_once('tcpdf/tcpdf.php'); // Adjust the path based on your directory structure
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+require_once('tcpdf/tcpdf.php');
 include 'connect.php';
 include 'query.php';
 
@@ -82,5 +85,3 @@ $html .= '</table>';
 // Output the PDF
 $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->Output('payment_history.pdf', 'I'); // 'I' to open the PDF in the browser
-
-?>
