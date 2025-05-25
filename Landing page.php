@@ -85,7 +85,7 @@ echo "<style>
         <?php include("categories.php"); ?>
     </div>
     <div class="trenddiv">
-        <div class="text-wrapper">Featured Products</div>
+        <h1 class="text-wrapper categories">Featured Products</h1>
         <div class="imgtrend">
             <?php include("trend.php"); ?>
         </div>
