@@ -3,7 +3,7 @@ $query = "SELECT * FROM category";
 $result = mysqli_query($con, $query);
 
 if ($result) {
-    echo "<div class='shop'>";
+    echo "<div class='shop' style='grid-template-columns: repeat(5, 1fr);'>";
 
     while ($row = mysqli_fetch_assoc($result)) {
         $categoryName = mysqli_real_escape_string($con, $row['ItemCategory']);
