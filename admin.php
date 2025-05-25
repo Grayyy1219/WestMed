@@ -5,7 +5,7 @@
     <meta charset="UTF-8" />
     <title>Admin</title>
     <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="css/Inventory.css">
+    <link rel="stylesheet" href="css/inventory.css">
     <link rel="stylesheet" href="css/dashboard.css">
     <link rel="icon" href="Image/logo.ico">
 
