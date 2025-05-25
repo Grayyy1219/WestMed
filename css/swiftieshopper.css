@@ -188,12 +188,16 @@ footer {
   filter: opacity(70%);
 }
 .imgtrend .itemcard {
+  display: flex;
   border: solid 1px #969696;
   height: 330px;
   aspect-ratio: 3 / 4;
   padding: 10px;
   border-radius: 15px;
   box-shadow: 4px 7px 10px -5px black;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
 }
 .shop {
   display: flex;
@@ -293,8 +297,9 @@ img {
 
 .imgtrend {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 20px;
   justify-items: center;
   justify-content: center;
+  margin: 40px 0;
 }
