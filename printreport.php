@@ -1,6 +1,6 @@
 <?php
 ob_start();
-require_once('tcpdf/tcpdf.php');
+require_once('TCPDF/tcpdf.php');
 include 'connect.php';
 include 'query.php';
 
