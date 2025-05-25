@@ -88,11 +88,14 @@
 <?php
 include 'connect.php';
 include 'query.php';
-$getCartItemsQuery = "SELECT cart.cart_id, items.ItemID, items.ItemName, items.ItemImage, cart.quantity, items.price
+$UserID = $_SESSION['UserID'] ?? '';
+if (!empty($UserID)) {
+    $getCartItemsQuery = "SELECT cart.cart_id, items.ItemID, items.ItemName, items.ItemImage, cart.quantity, items.price
                      FROM cart
                      INNER JOIN items ON cart.ItemID = items.ItemID
                      WHERE cart.customer_id = $UserID";
-$result = mysqli_query($con, $getCartItemsQuery);
+    $result = mysqli_query($con, $getCartItemsQuery);
+}
 ?>
 
 <body>
@@ -106,21 +109,23 @@ $result = mysqli_query($con, $getCartItemsQuery);
             <div class="cart-container">
                 <form method="post" action="" id="cartForm" enctype="multipart/form-data">
                     <?php
-                    while ($row = mysqli_fetch_assoc($result)) {
-                        $totalPrice = $row['quantity'] * $row['price'];
+                    if (!empty($UserID)) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            $totalPrice = $row['quantity'] * $row['price'];
                     ?>
-                        <div class="cart-item">
-                            <input type="checkbox" name="selectedItems[]" value="<?= $row['cart_id']; ?>" onchange="updateTotal(this)">
-                            <img src="<?= $row['ItemImage']; ?>" alt="Product Image" class="cart-item-image">
-                            <div class="cart-item-details">
-                                <p><?= $row['ItemName']; ?></p>
-                                <p>Quantity:
-                                    <input type="number" name="quantity[]" value="<?= $row['quantity']; ?>" min="1" data-price="<?= $row['price']; ?>" data-cart-id="<?= $row['cart_id']; ?>" onchange="updateQuantity(this)">
-                                </p>
-                                <p class='total-price'>Total Price: PHP <span><?= $totalPrice; ?></span></p>
+                            <div class="cart-item">
+                                <input type="checkbox" name="selectedItems[]" value="<?= $row['cart_id']; ?>" onchange="updateTotal(this)">
+                                <img src="<?= $row['ItemImage']; ?>" alt="Product Image" class="cart-item-image">
+                                <div class="cart-item-details">
+                                    <p><?= $row['ItemName']; ?></p>
+                                    <p>Quantity:
+                                        <input type="number" name="quantity[]" value="<?= $row['quantity']; ?>" min="1" data-price="<?= $row['price']; ?>" data-cart-id="<?= $row['cart_id']; ?>" onchange="updateQuantity(this)">
+                                    </p>
+                                    <p class='total-price'>Total Price: PHP <span><?= $totalPrice; ?></span></p>
+                                </div>
                             </div>
-                        </div>
                     <?php
+                        }
                     }
                     ?>
                     <div class="cart-total">

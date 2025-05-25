@@ -1,9 +1,10 @@
 <?php
+session_start();
 include("connect.php");
 
 if (isset($_POST['submit'])) {
-    $enteredUsername = $_POST['user'];
-    $enteredPassword = $_POST['pass'];
+    $enteredUsername = $_POST['user'] ?? '';
+    $enteredPassword = $_POST['pass'] ?? '';
 
     // Use prepared statement to protect against SQL injection
     $stmt = mysqli_prepare($con, "SELECT * FROM users WHERE username = ?");
@@ -14,42 +15,51 @@ if (isset($_POST['submit'])) {
     if ($result && $row = mysqli_fetch_assoc($result)) {
         $hashedPassword = $row['password'];
 
-        // Check if the entered password matches the stored hashed password or non-hashed password
-        if (password_verify($enteredPassword, $hashedPassword) || $enteredPassword == $hashedPassword) {
-            // Your existing code for updating the current user and redirecting
-            $username = $row["username"];
-            $firstName = $row['FName'];
-            $lastName = $row['LName'];
-            $email = $row['email'];
-            $address = $row['address'];
-            $phones = $row['phone'];
-            $profile = mysqli_real_escape_string($con, $row['profile']);
+        // Verify password
+        if (password_verify($enteredPassword, $hashedPassword) || $enteredPassword === $hashedPassword) {
+            // Store user ID in session
+            $_SESSION['UserID'] = $row['UserID'];
 
-            $updateQuery = mysqli_query($con, "UPDATE currentuser SET FName = '$firstName', LName = '$lastName', username = '$username', Email = '$email', address ='$address', phone = '$phones', profile = '$profile' WHERE UserId = 1");
+            // Optionally update the currentuser table (if still needed)
+            /*
+            $username   = $row["username"];
+            $firstName  = $row['FName'];
+            $lastName   = $row['LName'];
+            $email      = $row['email'];
+            $address    = $row['address'];
+            $phones     = $row['phone'];
+            $profile    = mysqli_real_escape_string($con, $row['profile']);
 
-            if ($updateQuery) {
-                if ($row['admin'] == 1) {
-                    echo '<script>alert("Successfully logged in as admin");</script>';
-                    echo '<script>window.location.href = "admin.php";</script>';
-                } else {
-                    echo '<script>alert("Successfully logged in");</script>';
-                    echo '<script>window.location.href = "Landing page.php";</script>';
-                }
-                exit();
+            mysqli_query($con, "UPDATE currentuser 
+                                SET FName = '$firstName', 
+                                    LName = '$lastName', 
+                                    username = '$username', 
+                                    Email = '$email', 
+                                    address ='$address', 
+                                    phone = '$phones', 
+                                    profile = '$profile' 
+                                WHERE UserId = 1");
+            */
+
+            // Redirect based on user type
+            if ($row['admin'] == 1) {
+                echo '<script>alert("Successfully logged in as admin");</script>';
+                echo '<script>window.location.href = "admin.php";</script>';
             } else {
-                echo '<script>alert("Error on login, try again later");</script>';
+                echo '<script>alert("Successfully logged in");</script>';
+                echo '<script>window.location.href = "Landing page.php";</script>';
             }
+            exit();
         } else {
-            // Password is incorrect
-            echo '<script>alert("Incorrect Password");</script>';
+            // Incorrect password
+            echo '<script>alert("Incorrect password");</script>';
         }
     } else {
         // User not found
-        echo '<script>alert("User not found or invalid credentials");</script>';
+        echo '<script>alert("User not found");</script>';
     }
 
-    // Redirect to Landing page.php for all cases of login failure
+    // Redirect on login failure
     echo '<script>window.location.href = "Landing page.php";</script>';
     exit();
 }
-?>

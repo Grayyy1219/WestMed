@@ -38,9 +38,9 @@ if ($result && mysqli_num_rows($result) > 0) :
 
         $shortenedTitle = (strlen($row['ItemName']) > 78) ? substr($row['ItemName'], 0, 78) . '...' : $row['ItemName'];
         ?>
-        <?php 
+        <?php
         echo "<div class='itemcard'>
-                <a href=''><img src='{$ItemImage}' width='100'></a>
+                <div><img src='{$ItemImage}' width='100'></div>
                 <p><strong>{$shortenedTitle}</strong></p>
                 <br><br>
                 <p style='font-size: small'>{$Solds} Solds!</p><br>
@@ -48,7 +48,7 @@ if ($result && mysqli_num_rows($result) > 0) :
                 <form action='' id='myForm' method='post' enctype='multipart/form-data'>
                 <div class='div-282' onclick=\"submitForm('itempage.php?Itemname=$ItemName&Category=$category&ItemImage=$ItemImage&Price=$Price&Solds=$Solds&Quantity=$Quantity&ItemID=$ItemID&Description=$Description')\">
                 </form>
-            <input type='submit' style='all:unset' class='div-29' value='Add to cart'>
+            <div style='all:unset' class='div-29'>Add to cart</div>
         </div>
             </div>";
         $x++ ?>

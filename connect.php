@@ -1,4 +1,5 @@
 <?php
+session_start();
 $configContent = file_get_contents('config/config.json');
 $config = json_decode($configContent, true);
 

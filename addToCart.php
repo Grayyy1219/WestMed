@@ -4,6 +4,10 @@
 include 'connect.php';
 include 'query.php';
 
+if (empty($UserID)) {
+    echo "<script>window.location.href = 'Login.php';</script>";
+    exit;
+}
 $productName = mysqli_real_escape_string($con, $_POST['Itemname']);
 $quantity = mysqli_real_escape_string($con, $_POST['quantity']);
 
