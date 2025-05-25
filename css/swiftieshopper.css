@@ -200,7 +200,8 @@ footer {
   align-items: center;
 }
 .shop {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   justify-content: center;
   align-items: center;
   margin-top: 50px;
@@ -210,7 +211,7 @@ footer {
 .shop .itemcard {
   display: flex;
   border: solid 1px #969696;
-  height: 330px;
+  height: 500px;
   aspect-ratio: 3 / 4;
   padding: 10px;
   border-radius: 15px;
