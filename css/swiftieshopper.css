@@ -211,7 +211,7 @@ footer {
 .shop .itemcard {
   display: flex;
   border: solid 1px #969696;
-  height: 500px;
+  width: 300px;
   aspect-ratio: 3 / 4;
   padding: 10px;
   border-radius: 15px;
