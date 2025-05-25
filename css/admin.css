@@ -30,7 +30,7 @@ header {
 }
 
 header .a {
-  width: 88px;
+  width: 100%;
   background-color: #0059ff2f;
   text-align: center;
   padding: 10px;
