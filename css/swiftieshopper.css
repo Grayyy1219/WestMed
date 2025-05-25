@@ -187,7 +187,14 @@ footer {
   transition: all 0.5s ease;
   filter: opacity(70%);
 }
-
+.imgtrend .itemcard {
+  border: solid 1px #969696;
+  height: 330px;
+  aspect-ratio: 3 / 4;
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 4px 7px 10px -5px black;
+}
 .shop {
   display: flex;
   justify-content: center;
