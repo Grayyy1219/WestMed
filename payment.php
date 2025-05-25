@@ -168,7 +168,7 @@ $referenceNumber = $result['data']['attributes']['reference_number'];
             const modalHeader = document.getElementById('modalHeader');
             const closeButton = document.getElementById('closeButton');
 
-            modal.style.display = "block";
+            modal.style.display = "flex";
             modalMessage.innerHTML = message;
             if (isSuccess) {
                 modalHeader.textContent = "Payment Success";
