@@ -28,8 +28,8 @@ $query .= " LIMIT $offset, $items_per_page";
 
 $result = mysqli_query($con, $query);
 ?>
+<h1 class="dash_h1" style="font-size: 50px">Inventory Management</h1>
 
-<h1 style="font-size: 50px">Inventory Management</h1>
 
 <form id="filter-form" action="#" method="get">
     <label for="filterGenre">Genre:</label>
@@ -89,7 +89,7 @@ $result = mysqli_query($con, $query);
             </td>
             <td>
                 <a href="edititem.php?bookId=<?= $bookId ?>"><button class="edit" type="submit">Edit</button></a>
-            <?php echo "<input class='edit' type='submit' onclick='openPopup({$row['ItemID']}, {$row['Price']})' value='Buy'>" ?>
+                <?php echo "<input class='edit' type='submit' onclick='openPopup({$row['ItemID']}, {$row['Price']})' value='Buy'>" ?>
             </td>
             <td style="min-width: 86px;">
                 <input type="checkbox" class="delete-checkbox" data-productid="<?= $bookId ?>">
@@ -127,12 +127,13 @@ $result = mysqli_query($con, $query);
 </div>
 <script src="jquery-3.6.4.min.js"></script>
 <script>
-     function openPopup(bookId, price) {
+    function openPopup(bookId, price) {
         var quantity = prompt("Enter Quantity:", "1");
         if (quantity !== null) {
             window.location.href = `purchaseItems3.php?selectedItems=${bookId}&Quantity=${quantity}&Price=${price}`;
         }
     }
+
     function loadPage(page) {
 
         var filterGenreValue = $("#filterGenre").val();
@@ -140,28 +141,29 @@ $result = mysqli_query($con, $query);
         $.ajax({
             url: '?page=' + page + '&filterGenre=' + filterGenreValue,
             type: 'GET',
-            success: function (data) {
+            success: function(data) {
                 var parsedData = $(data);
                 $('#inventory-table').html(parsedData.find('#inventory-table').html());
                 $('.pagination').html(parsedData.find('.pagination').html());
             },
-            error: function (xhr, status, error) {
+            error: function(xhr, status, error) {
                 console.error("AJAX Error: " + status + " - " + error);
             }
         });
     }
-    $(document).ready(function ($) {
-        $("#filter-form").submit(function (event) {
+    $(document).ready(function($) {
+        $("#filter-form").submit(function(event) {
             event.preventDefault();
             loadFilteredData();
         });
-        document.addEventListener("click", function (event) {
+        document.addEventListener("click", function(event) {
             if (event.target.classList.contains("adjust")) {
                 adjustStock(event.target.dataset.productid, parseInt(event.target.dataset.change));
             } else if (event.target.classList.contains("update")) {
                 addStock(event.target.dataset.productid);
             }
         });
+
         function adjustStock(productId, change) {
             var quantityField = document.getElementById("quantity" + productId);
             var currentQuantity = parseInt(quantityField.value);
@@ -171,14 +173,16 @@ $result = mysqli_query($con, $query);
                 updateStockInDatabase(productId, newQuantity);
             }
         }
+
         function addStock(productId) {
             var quantityField = document.getElementById("quantity" + productId);
             var quantityToAdd = parseInt(quantityField.value);
             updateStockInDatabase(productId, quantityToAdd, true);
         }
+
         function updateStockInDatabase(productId, newQuantity, showAlert) {
             var xhr = new XMLHttpRequest();
-            xhr.onreadystatechange = function () {
+            xhr.onreadystatechange = function() {
                 if (xhr.readyState == 4) {
                     if (xhr.status == 200) {
                         console.log(xhr.responseText);
@@ -203,17 +207,17 @@ $result = mysqli_query($con, $query);
             $.ajax({
                 url: '?page=1&filterGenre=' + filterGenreValue,
                 type: 'GET',
-                success: function (data) {
+                success: function(data) {
                     var parsedData = $(data);
                     $('#inventory-table').html(parsedData.find('#inventory-table').html());
                     $('.pagination').html(parsedData.find('.pagination').html());
                 },
-                error: function (xhr, status, error) {
+                error: function(xhr, status, error) {
                     console.error("AJAX Error: " + status + " - " + error);
                 }
             });
         }
-        $(document).on("click", ".delete", function () {
+        $(document).on("click", ".delete", function() {
             deleteSelectedRows();
         });
 
@@ -222,7 +226,7 @@ $result = mysqli_query($con, $query);
             var selectedProductIds = [];
 
             // Find all checkboxes that are checked
-            $(".delete-checkbox:checked").each(function () {
+            $(".delete-checkbox:checked").each(function() {
                 selectedProductIds.push($(this).attr("data-productid"));
             });
 
@@ -231,14 +235,16 @@ $result = mysqli_query($con, $query);
                 $.ajax({
                     url: "delete_books.php",
                     type: "POST",
-                    data: { productIds: selectedProductIds },
-                    success: function (data) {
+                    data: {
+                        productIds: selectedProductIds
+                    },
+                    success: function(data) {
                         // Remove the deleted rows from the HTML
                         $(".delete-checkbox:checked").closest("tr").remove();
 
                         alert("Selected Category deleted successfully!");
                     },
-                    error: function (xhr, status, error) {
+                    error: function(xhr, status, error) {
                         console.error("AJAX Error: " + status + " - " + error);
                     }
                 });

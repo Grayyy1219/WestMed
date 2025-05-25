@@ -30,10 +30,8 @@ echo "<style>
         <?php include("dashboard.php"); ?>
 
     </section>
-    <section id="page" style="min-height: 90vh;">
-        <center>
-            <h1 style="font-size: 50px">Customer Page</h1>
-        </center>
+    <section id="page a_dashboard" style="min-height: 90vh;">
+        <h1 class="dash_h1" style="font-size: 50px">Modify Page</h1>
         <dic class="center">
 
             <div class="wrapper1" id="page">
