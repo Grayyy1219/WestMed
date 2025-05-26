@@ -15,7 +15,7 @@
 
     echo "<div id='shop'>
         <div class='shop'>";
-    $imagesPerPage = 8;
+    $imagesPerPage = 6;
     $currentPage = $_GET['page'];
 
     $startIndex = ($currentPage - 1) * $imagesPerPage;
