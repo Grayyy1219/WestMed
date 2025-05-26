@@ -15,7 +15,7 @@ if ($result) {
         if ($countResult) {
             $totalRecords = mysqli_fetch_row($countResult)[0];
             echo "  <a href='category.php?category=$categoryName'><div class='itemcard'>
-               <img src='$categoryImg'>
+               //<img src='$categoryImg'>
                 <p>$totalRecords Items/s available</p>
                 <p><strong>$categoryName</strong></p>
             </div></a>";
