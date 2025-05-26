@@ -30,7 +30,7 @@ $result = mysqli_query($con, $query);
                     <tr>
                         <th>User ID</th>
                         <th>Full Name</th>
-                        
+
                         <th>Username</th>
                         <th>Status</th>
                         <th>Action</th>
@@ -79,7 +79,7 @@ $result = mysqli_query($con, $query);
     <script>
         function handleBlockUnblock(userId, action) {
             var xhttp = new XMLHttpRequest();
-            xhttp.onreadystatechange = function () {
+            xhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     var rowId = "user-row-" + userId;
                     document.getElementById(rowId).innerHTML = this.responseText;
@@ -94,35 +94,44 @@ $result = mysqli_query($con, $query);
         }
 
         function deleteSelectedRows() {
-            var selectedCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
-            var selectedUserIds = Array.from(selectedCheckboxes).map(function (checkbox) {
-                return checkbox.getAttribute('data-userid');
-            });
+            const selectedCheckboxes = document.querySelectorAll('.delete-checkbox:checked');
+            const selectedUserIds = Array.from(selectedCheckboxes).map(checkbox =>
+                checkbox.getAttribute('data-userid')
+            );
 
-            if (selectedUserIds.length > 0) {
-                var confirmed = confirm("Are you sure you want to delete the selected users?");
-                if (confirmed) {
-                    var xhttp = new XMLHttpRequest();
-                    xhttp.onreadystatechange = function () {
-                        if (this.readyState == 4) {
-                            if (this.status == 200) {
-                                location.reload();
-                            } else {
-                                // Handle errors here if needed
-                                console.error('Error:', this.status, this.statusText);
-                            }
-                        }
-                    };
-
-                    var requestData = "user_ids=" + encodeURIComponent(selectedUserIds.join(','));
-
-                    xhttp.open("POST", "delete_users.php");
-                    xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-                    xhttp.send(requestData);
-                }
-            } else {
+            if (selectedUserIds.length === 0) {
                 alert("Please select at least one user to delete.");
+                return;
             }
+
+            const confirmed = confirm("Are you sure you want to delete the selected users?");
+            if (!confirmed) return;
+
+            const adminPassword = prompt("Enter admin password to confirm deletion:");
+            if (!adminPassword) {
+                alert("Admin password is required.");
+                return;
+            }
+
+            const xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+                if (this.readyState === 4) {
+                    if (this.status === 200) {
+                        alert(this.responseText);
+                        location.reload();
+                    } else {
+                        alert("Error: " + this.responseText);
+                    }
+                }
+            };
+
+            const requestData =
+                "user_ids=" + encodeURIComponent(selectedUserIds.join(',')) +
+                "&admin_password=" + encodeURIComponent(adminPassword);
+
+            xhttp.open("POST", "delete_users.php", true);
+            xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+            xhttp.send(requestData);
         }
     </script>
 </body>
