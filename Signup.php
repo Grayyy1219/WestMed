@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="css/loginsignup.css">
     <link rel="stylesheet" href="css/header.css">
     <link rel="stylesheet" href="css/footer.css">
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
 </head>
 
 <?php
@@ -20,7 +22,7 @@ include("connect.php");
             <div class="nav">
                 <a href="Landing page.php">
                     <div id="asd">
-                        <img src="upload/page/logo.png"width="30" alt="Logo" />
+                        <img src="upload/page/logo.png" width="30" alt="Logo" />
                         <h2 class="Swiftie Shopper">WestMed</h2>
                     </div>
                 </a>
@@ -46,13 +48,14 @@ include("connect.php");
                             <img class="img-2" src="img/lock.svg" />
                         </div>
                         <div class="confirm">
-                            <input class="input" placeholder="Confirm Password" type="cpassword" name="txtcpassword" id="confirmPassword" required />
+                            <input class="input" placeholder="Confirm Password" type="password" name="txtcpassword" id="confirmPassword" required />
                             <img class="img-2" src="img/lock.svg" />
                         </div>
                         <div class="mail">
                             <input class="input" placeholder="Email" type="text" name="txtemail" required />
                             <img class="img-2" src="img/mail.svg" />
                         </div>
+                        <div class="g-recaptcha" data-sitekey="6Lex2UkrAAAAAGUDo6Ru6_EMHN5diDJy085syPSx"></div>
                         <div class="div-wrapper">
                             <input type="submit" formaction="createuser.php" class="text-wrapper-5" value="Sign up">
                         </div>
