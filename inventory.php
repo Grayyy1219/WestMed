@@ -1,6 +1,4 @@
 <?php
-include("connect.php");
-include("query.php");
 
 // Fetch available genres from the database
 $genreQuery = "SELECT DISTINCT ItemCategory  FROM category";
@@ -19,7 +17,6 @@ $filterGenre = isset($_GET['filterGenre']) ? $_GET['filterGenre'] : 'all';
 
 $query = "SELECT * FROM items";
 
-// Include genre filter if it's not 'all'
 if ($filterGenre !== 'all') {
     $query .= " WHERE Category = '$filterGenre'";
 }
