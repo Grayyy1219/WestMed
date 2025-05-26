@@ -51,7 +51,7 @@
     while ($row = $result->fetch_assoc()) {
         $ItemID = $row["ItemID"];
         $ItemName = $row["ItemName"];
-        $category = $row["category"];
+        $category = $row["Category"];
         $ItemImage = $row["ItemImage"];
         $Price = $row["Price"];
         $Solds = $row["Solds"];
